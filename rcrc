@@ -1,0 +1,2 @@
+EXCLUDES="README.md LICENSE rcrc install.sh"
+DOTFILES_DIRS="$HOME/dotfiles"
