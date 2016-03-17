@@ -1,9 +1,5 @@
-![dotfiles](https://raw.githubusercontent.com/mscoutermarsh/dotfiles/master/autobot.jpg)
-
 dotfiles
 ===================
-![screenshot](https://github.com/mscoutermarsh/dotfiles/blob/master/screenshot.png)
-(Here's what my setup looks like. Vim/Tmux)
 
 ## New to Vim?
 + [Learning Vim in a Week](https://mikecoutermarsh.com/boston-vim-learning-vim-in-a-week/)
@@ -45,22 +41,22 @@ I use sourcecode pro. Once installed, go into iterm2 and Profiles > Text. Change
 
 ### Recommended
 
-**iterm2**  
+**iterm2**
 Use iterm2 instead of Terminal: http://iterm2.com/
 
 There are two themes available for iterm2 inside this repository. Both solarized dark and light (to match vim!) Take a look at the `iterm2` directory.
 
-**MacVim**  
+**MacVim**
 By default OSX has an older version of Vim installed. I recommend installing MacVim and running it from within iterm2. This can be done with brew.
 ```
 $ brew install macvim --override-system-vim
 ```
 This overwrites your default Vim installation. You should restart terminal after installing.
 
-**Oh-My-ZSH!**  
+**Oh-My-ZSH!**
 I use Oh-My-ZSH instead of Bash. Info & installation instructions here: https://github.com/robbyrussell/oh-my-zsh
 
-**Tmux**  
+**Tmux**
 ```
 $ brew install tmux
 $ brew install reattach-to-user-namespace
