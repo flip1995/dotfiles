@@ -6,9 +6,6 @@ set lazyredraw
 
 let g:ruby_path="~/.rvm/bin/ruby"
 
-" have jsx highlighting/indenting work in .js files as well
-let g:jsx_ext_required = 0
-
 let $PATH='/usr/local/bin:' . $PATH
 
 :au FocusLost * :wa "Save on focus lost
@@ -17,19 +14,12 @@ let $PATH='/usr/local/bin:' . $PATH
 let g:session_autoload = 'no'
 
 " Leader Mappings
-map <Space> <leader>
+:let mapleader=','
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
 map <Leader>gp :Gpush<CR>
-"
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
 
 " Toggle nerdtree with F10
 map <F10> :NERDTreeToggle<CR>
@@ -121,10 +111,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-let g:rspec_command = 'call Send_to_Tmux("bin/rspec {spec}\n")'
-let g:mocha_js_command = 'call Send_to_Tmux("$(npm bin)/mocha --opts spec/javascripts/mocha.opts {spec}\n")'
-let g:rspec_runner = "os_x_iterm"
-
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
@@ -163,7 +149,7 @@ if exists("syntax_on")
 endif
 let g:colors_name = "oceandeep"
 
-"""" GUI 
+"""" GUI
 
 highlight Cursor        gui=None guibg=PaleTurquoise3 guifg=White
 highlight CursorIM      gui=bold guifg=white guibg=PaleTurquoise3
@@ -288,12 +274,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-:nnoremap <expr> y (v:register ==# '"' ? '"+' : '') . 'y'
-:nnoremap <expr> yy (v:register ==# '"' ? '"+' : '') . 'yy'
-:nnoremap <expr> Y (v:register ==# '"' ? '"+' : '') . 'Y'
-:xnoremap <expr> y (v:register ==# '"' ? '"+' : '') . 'y'
-:xnoremap <expr> Y (v:register ==# '"' ? '"+' : '') . 'Y'
-
 " convert hash rockets
 nmap <leader>rh :%s/\v:(\w+) \=\>/\1:/g<cr>
 
@@ -314,9 +294,6 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -369,20 +346,16 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Reload .vimrc
+nnoremap <F5> :source $MYVIMRC<CR>
+
 " Copy and Paste to clipboard
 nmap <C-a> ggVG
 vmap <C-c> "+y
 vmap <Insert> d"+gP
-nmap <Insert> "+gp 
+nmap <Insert> "+gp
 
-" Create related file (Rails Spec file if missing). :AC
-function! s:CreateRelated()
-  let related = rails#buffer().alternate_candidates()[0]
-  call s:Open(related)
-endfunction
+" Toggle Comment
+nnoremap <leader>t :TComment<CR>
+vnoremap <leader>t :TCommentBlock<CR>
 
-function! s:Open(file)
-  exec('vsplit ' . a:file)
-endfunction
-
-command! AC :call <SID>CreateRelated()
