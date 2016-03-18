@@ -11,7 +11,7 @@ $ cd ~
 $ git clone https://github.com/mscoutermarsh/dotfiles
 ```
 
-Now you only have to run the install.sh script. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
+Now you only have to run the `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
 
 If the script isn't working properly go through following steps.
 
@@ -35,7 +35,7 @@ RCM creates dotfile symlinks (`.vimrc` -> `/dotfiles/vimrc`) from your home dire
 You'll may have to use a custom font for Airline to look nice. (Seeing weird symbols? This is why!). See here: https://github.com/Lokaltog/powerline-fonts
 I use sourcecode pro, as [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles) recommended.
 
-The script will install the fonts automatically. You only have to select them through your terminal.
+The script (`./install.sh`) will install the fonts automatically. You only have to select them through your terminal.
 
 ### Installing Plugins
 Plugins are listed in `vimrc.bundles`.
