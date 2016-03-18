@@ -11,7 +11,7 @@ $ cd ~
 $ git clone https://github.com/mscoutermarsh/dotfiles
 ```
 
-Now you only have to run the `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
+Now you only have to run `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
 
 If the script isn't working properly go through following steps.
 
