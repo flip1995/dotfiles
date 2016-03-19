@@ -1,14 +1,14 @@
 dotfiles
 ===================
 
-These are the config files for vim. Initially they are copied from [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles). I'm still modifying these files, but will only release stable versions here.
+These are the config files for vim. Initially they are copied from [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles). I'm still modifying these files, but will only push stable versions here.
 
 ## Installation
 
 Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
 ```
 $ cd ~
-$ git clone https://github.com/mscoutermarsh/dotfiles
+$ git clone https://github.com/flip1995/dotfiles.git
 ```
 
 Now you only have to run `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
