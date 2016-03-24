@@ -139,6 +139,9 @@ au InsertLeave * set nopaste
 
 " Fold
 map <leader>f :foldclose<CR>
+
+" Reload .vimrc
+map <F5> :source $MYVIMRC<CR>
 " }}}
 
 "For nicer looking {{{
