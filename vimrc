@@ -348,10 +348,6 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_enable_highlighting=0
-
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
