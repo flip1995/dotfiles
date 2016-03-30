@@ -109,17 +109,17 @@ vmap <C-c> "+y
 vmap <Insert> d"+gP
 nmap <Insert> "+gp
 
-" Toggle Comment
-nnoremap <leader>t :TComment<CR>
-vnoremap <leader>t :TCommentBlock<CR>
-
 " Leader Mappings
 :let mapleader=','
 map <Leader>w :update<CR>
-map <Leader>q :qall<CR>
+map <Leader>q :q<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
 map <Leader>gp :Gpush<CR>
+
+" Toggle Comment
+nnoremap <Leader>t :TComment<CR>
+vnoremap <Leader>t :TCommentBlock<CR>
 
 " Toggle nerdtree with F10
 map <F10> :NERDTreeToggle<CR>
