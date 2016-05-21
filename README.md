@@ -11,7 +11,12 @@ $ cd ~
 $ git clone https://github.com/flip1995/dotfiles.git
 ```
 
-Now you only have to run `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running. A script to setup vim on Windows may follow.
+Now you only have to run `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running.
+
+If you have root access on your machine and want the .vimrc and all plugins to apply also when you're editing as root, then run `sudo ./install_root`.
+CAUTION: Read the 'install_root'-script carefully before running! It creates symlinks in your **root** directory and executes some other commands as root, that you may or may not want to be executed.
+
+A script to setup vim on Windows may follow.
 
 If the script isn't working properly go through following steps.
 

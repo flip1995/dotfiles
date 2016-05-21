@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "You have to run this script as root."
+       echo "Try 'sudo ./install_root.sh'!"
+       echo "If you don't have root access try running './install.sh'."
+  exit -1
+fi
+
+hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting."; exit 1; }
+
+if ! hash rcup 2>/dev/null; then
+    curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.0.tar.gz
+
+    tar -xvf rcm-1.3.0.tar.gz
+    cd rcm-1.3.0
+
+    ./configure
+    make
+    sudo make instal
+
+    cd ..
+    rm -rf rcm-1.3.0
+    rm -rf rcm-1.3.0.tar.gz
+fi
+
+env RCRC=$HOME/dotfiles/rcrc rcup
+ln -s -f /home/pkrones/.vimrc /root/.vimrc
+ln -s -f /home/pkrones/.vim/ /root/
+echo "Symlinks successfully created for ~/dotfiles."
+
+if ! fc-list | grep -i Sauce\ Code\ Powerline\ Regular.otf >/dev/null; then
+    git clone https://github.com/powerline/fonts.git /root/fonts
+    sh /root/fonts/install.sh
+    echo "Set your terminal font to 'Source Code Pro'."
+    rm -rf /root/fonts
+fi
+
+exit 0
