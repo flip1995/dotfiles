@@ -11,7 +11,7 @@ $ cd ~
 $ git clone https://github.com/flip1995/dotfiles.git
 ```
 
-Now you only have to run `./install.sh`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running.
+Now you only have to run `./install`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running.
 
 If you have root access on your machine and want the .vimrc and all plugins to apply also when you're editing as root, then run `sudo ./install_root`. 
 
