@@ -2,8 +2,8 @@
 
 if [ "$EUID" -ne 0 ]
   then echo "You have to run this script as root."
-       echo "Try 'sudo ./install_root.sh'!"
-       echo "If you don't have root access try running './install.sh'."
+       echo "Try 'sudo ./install_root'!"
+       echo "If you don't have root access try running './install'."
   exit -1
 fi
 
