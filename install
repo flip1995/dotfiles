@@ -6,6 +6,7 @@ ln -s -f $HOME/dotfiles/vimrc $HOME/.vimrc
 ln -s -f $HOME/dotfiles/gvimrc $HOME/.gvimrc
 ln -s -f $HOME/dotfiles/vimrc $HOME/.vimrc.bundles
 ln -s -f $HOME/dotfiles/vim $HOME/
+mv $HOME/vim $HOME/.vim
 
 if [ ! -e $HOME/.vim/bundle/vundle ]; then
   git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
