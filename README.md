@@ -22,32 +22,40 @@ A script to setup vim on Windows may follow.
 If the script isn't working properly go through following steps.
 
 ### Installation steps
-Install rcm
+Create symlinks of vimrc, gvimrc and vimrc.bundles:
+```
+$ cd ~
+$ ln -sf dotfiles/vimrc .vimrc
+$ ln -sf dotfiles/gvimrc .gvimrc
+$ ln -sf dotfiles/vimrc.bundles .vimrc.bundles
+```
+Now you have to create a symlink of the vim folder:
+```
+$ ln -sf dotfiles/vim .
+$ mv -T vim .vim
+```
+Install the plugins and you're done.
 
-```
-$ brew tap thoughtbot/formulae
-$ brew install rcm
-```
-
-If you're missing brew you can get it here https://github.com/Linuxbrew/linuxbrew.
-
-Run rcm (this command expects that you cloned your dotfiles to `~/dotfiles/`)
-```
-$ env RCRC=$HOME/dotfiles/rcrc rcup
-```
-RCM creates dotfile symlinks (`.vimrc` -> `/dotfiles/vimrc`) from your home directory to your `/dotfiles/` directory.
+If you want to run vim as root with the same configurations and plugins you have to symlink the files to your `/root/` directory and install the plugins as root.
 
 #### Custom Fonts
 You'll may have to use a custom font for Airline to look nice. (Seeing weird symbols? This is why!). See here: https://github.com/Lokaltog/powerline-fonts
 I use sourcecode pro, as [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles) recommended.
 
-The script (`./install.sh`) will install the fonts automatically. You only have to select them through your terminal.
+The scripts (`./install` and `./install_root`) will install the fonts automatically. You only have to select them through your terminal.
 
 ### Installing Plugins
 Plugins are listed in `vimrc.bundles`.
 
-To install them you'll need vundle. Installation directions are here: https://github.com/gmarik/Vundle.vim.
-Once vundle is installed. Open vim (`$ vim`) and type `:BundleInstall`. And then restart vim. You'll need to do this for all the plugins to work.
+To install them you'll need vundle. You can get vundle by cloning it into the `~/.vim/bundle` directory:
+```
+$ git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+```
+To install the plugins with vundle open vim (`$ vim`) and type `:BundleInstall`. Running the command 
+```
+$ vim -u $HOME/.vimrc.bundles +BundleInstall +qa
+```
+will do the trick too. Don't forget to restart vim after installing plugins.
 
 ---
 These are a heavily modified version of Thoughtbot's dotfiles. More detailed instructions are available here: http://github.com/thoughtbot/dotfiles.
