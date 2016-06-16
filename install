@@ -8,10 +8,10 @@ ln -s -f $HOME/dotfiles/vimrc.bundles $HOME/.vimrc.bundles
 ln -s -f $HOME/dotfiles/vim $HOME/
 mv -T $HOME/vim $HOME/.vim
 
-if [ ! -e $HOME/.vim/bundle/vundle ]; then
-  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
-vim -u $HOME/.vimrc.bundles +BundleInstall +qa
+vim -u $HOME/.vimrc.bundles +PluginInstall +qa
 
 echo "Symlinks successfully created for ~/dotfiles."
 
