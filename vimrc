@@ -98,6 +98,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+" Easy tab navigation
+nnoremap <Leader>p :tabprevious<CR>
+nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>c :tabclose<CR>
 
 " Copy and Paste to clipboard
 nmap <C-a> ggVG
