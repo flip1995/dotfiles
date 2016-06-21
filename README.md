@@ -49,11 +49,11 @@ Plugins are listed in `vimrc.bundles`.
 
 To install them you'll need vundle. You can get vundle by cloning it into the `~/.vim/bundle` directory:
 ```
-$ git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+$ git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 ```
-To install the plugins with vundle open vim (`$ vim`) and type `:BundleInstall`. Running the command 
+To install the plugins with vundle open vim (`$ vim`) and type `:PluginInstall`. Running the command 
 ```
-$ vim -u $HOME/.vimrc.bundles +BundleInstall +qa
+$ vim -u $HOME/.vimrc.bundles +PluginInstall +qa
 ```
 will do the trick too. Don't forget to restart vim after installing plugins.
 
