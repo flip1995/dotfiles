@@ -85,9 +85,13 @@ set expandtab
 set list listchars=tab:»·,trail:·
 
 set encoding=utf-8
+
+set cmdheight=2
 " }}}
 
 " Keymappings {{{
+:let mapleader=','
+
 " Easy navigation between splits. Instead of ctrl-w + j. Just ctrl-j
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -110,7 +114,6 @@ vmap <Insert> d"+gP
 nmap <Insert> "+gp
 
 " Leader Mappings
-:let mapleader=','
 map <Leader>w :update<CR>
 map <Leader>q :q<CR>
 map <Leader>gs :Gstatus<CR>
