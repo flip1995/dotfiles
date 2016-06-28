@@ -11,11 +11,14 @@ USER_HOME=$(eval echo ~${SUDO_USER})
 
 hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting."; exit 1; }
 
+ln -s -f $USER_HOME/dotfiles/bashrc $USER_HOME/.bashrc
 ln -s -f $USER_HOME/dotfiles/vimrc $USER_HOME/.vimrc
 ln -s -f $USER_HOME/dotfiles/gvimrc $USER_HOME/.gvimrc
 ln -s -f $USER_HOME/dotfiles/vimrc.bundles $USER_HOME/.vimrc.bundles
 ln -s -f $USER_HOME/dotfiles/vim $USER_HOME/
 mv -T $USER_HOME/vim $USER_HOME/.vim
+
+ln -s -f $USER_HOME/.bashrc /root/.bashrc
 ln -s -f $USER_HOME/.vim/ /root/
 ln -s -f $USER_HOME/.vimrc /root/.vimrc
 ln -s -f $USER_HOME/.gvimrc /root/.gvimrc
