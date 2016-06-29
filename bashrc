@@ -27,3 +27,5 @@ alias grep='grep --color=auto'
 alias svim='sudo vim'
 ## Git status
 alias gits='git status'
+## Tmux easy session attach
+alias tmuxa='tmux attach -t'

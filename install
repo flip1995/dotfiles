@@ -2,7 +2,12 @@
 
 hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting."; exit 1; }
 
+# symlinks
+## tmux
+ln -s -f $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+## bash
 ln -s -f $HOME/dotfiles/bashrc $HOME/.bashrc
+## vim
 ln -s -f $HOME/dotfiles/vimrc $HOME/.vimrc
 ln -s -f $HOME/dotfiles/gvimrc $HOME/.gvimrc
 ln -s -f $HOME/dotfiles/vimrc.bundles $HOME/.vimrc.bundles
