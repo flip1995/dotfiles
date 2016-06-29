@@ -1,7 +1,7 @@
 dotfiles
 ===================
 
-These are the config files for vim. Initially they are copied from [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles). I'm still modifying these files, but will only push stable versions here.
+I'm still modifying these files, but will only push stable versions here.
 
 ## Installation
 
@@ -13,7 +13,7 @@ $ git clone https://github.com/flip1995/dotfiles.git
 
 Now you only have to run `./install`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running.
 
-If you have root access on your machine and want the .vimrc and all plugins to apply also when you're editing as root, then run `sudo ./install_root`. 
+If you have root access on your machine and want the .vimrc and all plugins to apply also when you're editing as root, then run `sudo ./install_root`.
 
 CAUTION: Read the `install_root` script carefully before running! It creates symlinks in your **root** directory and executes some other commands as root, that you may or may not want to be executed.
 
@@ -39,8 +39,7 @@ Install the plugins and you're done.
 If you want to run vim as root with the same configurations and plugins you have to symlink the files to your `/root/` directory and install the plugins as root.
 
 #### Custom Fonts
-You'll may have to use a custom font for Airline to look nice. (Seeing weird symbols? This is why!). See here: https://github.com/Lokaltog/powerline-fonts
-I use sourcecode pro, as [@mscountermarsh](https://github.com/mscoutermarsh/dotfiles) recommended.
+You'll may have to use a custom font for Airline to look nice. (Seeing weird symbols? This is why!). See here: https://github.com/Lokaltog/powerline-fonts. I'm currently using sourcecode pro.
 
 The scripts (`./install` and `./install_root`) will install the fonts automatically. You only have to select them through your terminal.
 
@@ -51,14 +50,29 @@ To install them you'll need vundle. You can get vundle by cloning it into the `~
 ```
 $ git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 ```
-To install the plugins with vundle open vim (`$ vim`) and type `:PluginInstall`. Running the command 
+To install the plugins with vundle open vim (`$ vim`) and type `:PluginInstall`. Running the command
 ```
 $ vim -u $HOME/.vimrc.bundles +PluginInstall +qa
 ```
 will do the trick too. Don't forget to restart vim after installing plugins.
 
 ---
-These are a heavily modified version of Thoughtbot's dotfiles. More detailed instructions are available here: http://github.com/thoughtbot/dotfiles.
+#### Tmux
+Tmux is a _terminal multiplexer_. On most systems you can install it with your
+package manager. On Arch for example with:
+```
+$ sudo pacman -S tmux
+```
 
-#### Contributing
-Did you have trouble installing this? Do you have an improved installing script? Maybe for another system? Please fork & create a pull request with your suggestions.
+#### Color schemes
+I'm using color schemes for vim, tmux and the gnome terminal from different
+sources:
+
+Vim: http://www.vim.org/scripts/script.php?script_id=368
+
+Tmux: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+
+Terminal: https://github.com/chriskempson/base16-gnome-terminal (Base-16-Pop)
+
+With the settings of the dotfiles this three schemes will fit in each other
+perfectly!
