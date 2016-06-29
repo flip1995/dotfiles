@@ -25,3 +25,5 @@ alias ll='ls -la'
 alias grep='grep --color=auto'
 ## Run vim as sudo
 alias svim='sudo vim'
+## Git status
+alias gits='git status'
