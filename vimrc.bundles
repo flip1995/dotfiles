@@ -30,6 +30,7 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'terryma/vim-expand-region'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'christoomey/vim-tmux-navigator'
 
 filetype on
 call vundle#end()

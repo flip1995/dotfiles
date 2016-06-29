@@ -1,6 +1,6 @@
 " vim:fdm=marker
 
-" Basic Settings {{{
+" Basic settings {{{
 set shell=/bin/bash
 runtime macros/matchit.vim
 
@@ -92,16 +92,12 @@ set cmdheight=2
 " Keymappings {{{
 :let mapleader=','
 
-" Easy navigation between splits. Instead of ctrl-w + j. Just ctrl-j
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
 " Easy tab navigation
 nnoremap <Leader>p :tabprevious<CR>
 nnoremap <Leader>n :tabnext<CR>
@@ -145,6 +141,17 @@ map <leader>f :foldclose<CR>
 
 " Reload .vimrc
 map <F5> :source $MYVIMRC<CR>
+" }}}
+
+" vim <3 tmux {{{
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+let g:tmux_navigator_save_on_switch = 1
 " }}}
 
 "For nicer looking {{{
