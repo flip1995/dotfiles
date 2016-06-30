@@ -21,6 +21,7 @@ vim -u $HOME/.vimrc.bundles +PluginInstall +qa
 
 echo "Symlinks successfully created for ~/dotfiles."
 
+# Install fonts
 if ! fc-list | grep -i Sauce\ Code\ Powerline\ Regular.otf >/dev/null; then
     git clone https://github.com/powerline/fonts.git $HOME/fonts
     sh $HOME/fonts/install.sh

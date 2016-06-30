@@ -72,7 +72,10 @@ Vim: http://www.vim.org/scripts/script.php?script_id=368
 
 Tmux: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 
-Terminal: https://github.com/chriskempson/base16-gnome-terminal (Base-16-Pop)
+Terminal: https://github.com/chriskempson/base16-gnome-terminal (Modified Color
+Scheme)
 
+To install the terminal color scheme execute the command `source
+~/dotfiles/termColorScheme.sh` and restart your terminal.
 With the settings of the dotfiles this three schemes will fit in each other
 perfectly!

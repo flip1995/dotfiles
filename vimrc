@@ -120,8 +120,8 @@ map <Leader>gp :Gpush<CR>
 nnoremap <Leader>t :TComment<CR>
 vnoremap <Leader>t :TCommentBlock<CR>
 
-" Toggle nerdtree with F10
-map <F10> :NERDTreeToggle<CR>
+" Toggle nerdtree with F8
+map <F8> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
 
