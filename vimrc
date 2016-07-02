@@ -131,13 +131,11 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" key to insert mode with paste using F2 key
-map <F2> :set paste<CR>i
-" Leave paste mode on exit
-au InsertLeave * set nopaste
-
 " Fold
 map <leader>f :foldclose<CR>
+
+" Count occurences of word under cursor
+map ,* *<C-O>:%s///gn<CR>
 
 " Reload .vimrc
 map <F5> :source $MYVIMRC<CR>
@@ -237,9 +235,6 @@ set undodir=~/.vim/undo/
 set undofile
 set undolevels=1000
 set undoreload=10000
-
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
