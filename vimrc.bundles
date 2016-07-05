@@ -10,7 +10,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Define bundles via Github repos
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
-Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'airblade/vim-gitgutter'

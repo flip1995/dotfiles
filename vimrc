@@ -87,6 +87,20 @@ set list listchars=tab:»·,trail:·
 set encoding=utf-8
 
 set cmdheight=2
+
+" Persistent undo
+set undodir=~/.vim/undo/
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
 " }}}
 
 " Keymappings {{{
@@ -179,7 +193,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 set splitbelow
 set splitright
 
-" Remove trailing whitespace on save for ruby files.
+" Remove trailing whitespace on save
 function! s:RemoveTrailingWhitespaces()
   "Save last cursor position
   let l = line(".")
@@ -194,25 +208,8 @@ au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
 " }}}
 
 " Searching {{{
-" bind K to search word under cursor
-nnoremap K :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup
-  let g:grep_cmd_opts = '--line-numbers --noheading'
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 :set smartcase
 :set ignorecase
-:set noantialias
 " }}}
 
 " Airline {{{
@@ -227,20 +224,4 @@ set t_Co=256
 
 " Color scheme {{{
 :colorscheme oceandeep
-" }}}
-
-" Else {{{
-" Persistent undo
-set undodir=~/.vim/undo/
-set undofile
-set undolevels=1000
-set undoreload=10000
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
 " }}}
