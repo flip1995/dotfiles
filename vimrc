@@ -172,7 +172,7 @@ hi CursorLineNr guifg=#050505
 
 " Numbers
 set number
-set numberwidth=5
+set numberwidth=4
 
 " Tab completion
 " will insert tab at beginning of line,
