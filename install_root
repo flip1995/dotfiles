@@ -15,6 +15,7 @@ hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting
 ## tmux
 ln -s -f $USER_HOME/dotfiles/tmux.conf $USER_HOME/.tmux.conf
 ## bash
+ln -s -f $USER_HOME/dotfiles/bash_profile $USER_HOME/.bash_profile
 ln -s -f $USER_HOME/dotfiles/bashrc $USER_HOME/.bashrc
 ## vim
 ln -s -f $USER_HOME/dotfiles/vimrc $USER_HOME/.vimrc
@@ -27,6 +28,7 @@ mv -T $USER_HOME/vim $USER_HOME/.vim
 ## tmux
 ln -s -f $USER_HOME/.tmux.conf /root/.tmux.conf
 ## bash
+ln -s -f $USER_HOME/.bash_profile /root/.bash_profile
 ln -s -f $USER_HOME/.bashrc /root/.bashrc
 ## vim
 ln -s -f $USER_HOME/.vim/ /root/
