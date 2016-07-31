@@ -13,30 +13,9 @@ $ git clone https://github.com/flip1995/dotfiles.git
 
 Now you only have to run `./install`. It's tested on the latest Arch-Linux Version. If you're using another system, please check the script before running.
 
-If you have root access on your machine and want the .vimrc and all plugins to apply also when you're editing as root, then run `sudo ./install_root`.
+If you have root access on your machine and want the dotfiles to apply also when you're working as root, then run `sudo ./install_root`.
 
 CAUTION: Read the `install_root` script carefully before running! It creates symlinks in your **root** directory and executes some other commands as root, that you may or may not want to be executed.
-
-A script to setup vim on Windows may follow.
-
-If the script isn't working properly go through following steps.
-
-### Installation steps
-Create symlinks of vimrc, gvimrc and vimrc.bundles:
-```
-$ cd ~
-$ ln -sf dotfiles/vimrc .vimrc
-$ ln -sf dotfiles/gvimrc .gvimrc
-$ ln -sf dotfiles/vimrc.bundles .vimrc.bundles
-```
-Now you have to create a symlink of the vim folder:
-```
-$ ln -sf dotfiles/vim .
-$ mv -T vim .vim
-```
-Install the plugins and you're done.
-
-If you want to run vim as root with the same configurations and plugins you have to symlink the files to your `/root/` directory and install the plugins as root.
 
 #### Custom Fonts
 You'll may have to use a custom font for Airline to look nice. (Seeing weird symbols? This is why!). See here: https://github.com/Lokaltog/powerline-fonts. I'm currently using sourcecode pro.
