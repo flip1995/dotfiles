@@ -15,6 +15,8 @@ eval $(thefuck --alias)
 alias sudo='sudo '
 ## cd.. == cd ..
 alias cd..='cd ..'
+## Go to previous directory
+alias cb='cd $OLDPWD'
 ## Color the ls output
 alias ls='ls --color=auto'
 ## Show hidden files
