@@ -118,7 +118,7 @@ nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>c :tabclose<CR>
 
 " Copy and Paste to clipboard
-nmap <C-a> ggVG
+nmap <leader>a ggVG
 vmap <C-c> "+y
 vmap <Insert> d"+gP
 nmap <Insert> "+gp
