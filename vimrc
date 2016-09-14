@@ -51,6 +51,8 @@ endif
 
 filetype plugin indent on
 
+:set spelllang=en_us,de_de
+
 augroup vimrcEx
   autocmd!
 
@@ -66,14 +68,15 @@ augroup vimrcEx
     \ endif
 
   " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.tex set filetype=latex
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  autocmd BufRead,BufNewFile *.tex setlocal textwidth=80
 augroup END
 
 " Softtabs, 4 spaces
