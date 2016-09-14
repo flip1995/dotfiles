@@ -70,9 +70,10 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 
-  " Enable spellchecking for Markdown
+  " Enable spellchecking
   autocmd FileType markdown setlocal spell
   autocmd BufRead,BufNewFile *.tex setlocal spell
+  autocmd FileType gitcommit setlocal spell
 
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
