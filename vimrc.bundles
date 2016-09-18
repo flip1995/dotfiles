@@ -27,6 +27,7 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'lervag/vimtex'
+Plugin 'skwp/greplace.vim'
 
 filetype on
 call vundle#end()
