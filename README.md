@@ -5,7 +5,7 @@ I'm still modifying these files, but will only push stable versions here.
 
 ## Installation
 
-Clone this repo (or your own fork!) to your **home** directory (`/Users/username`).
+Clone this repo (or your own fork!) to your **home** directory (`/home/username`).
 ```
 $ cd ~
 $ git clone https://github.com/flip1995/dotfiles.git
@@ -22,34 +22,38 @@ You'll may have to use a custom font for Airline to look nice. (Seeing weird sym
 
 The scripts (`./install` and `./install_root`) will install the fonts automatically. You only have to select them through your terminal.
 
-### Installing Plugins
-Plugins are listed in `vimrc.bundles`.
+---
+### Vim
 
-To install them you'll need vundle. You can get vundle by cloning it into the `~/.vim/bundle` directory:
+#### Installing Plugins
+Plugins are listed in `vimrc.bundles`. After running one of the install scripts all plugins (inclusive `Vundle`) should be installed. 
+
+To install them manually you'll need `Vundle`. You can get `Vundle` by cloning it into the `~/.vim/bundle` directory:
 ```
 $ git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 ```
-To install the plugins with vundle open vim (`$ vim`) and type `:PluginInstall`. Running the command
+To install the plugins with `Vundle` open vim (`$ vim`) and type `:PluginInstall`. Running the command
 ```
 $ vim -u $HOME/.vimrc.bundles +PluginInstall +qa
 ```
 will do the trick too. Don't forget to restart vim after installing plugins.
 
 ---
-#### Tmux
+### Tmux
 Tmux is a _terminal multiplexer_. On most systems you can install it with your
 package manager. On Arch for example with:
 ```
 $ sudo pacman -S tmux
 ```
 
-#### Color schemes
+---
+### Color schemes
 I'm using color schemes for vim, tmux and the gnome terminal from different
 sources:
 
 Vim: http://www.vim.org/scripts/script.php?script_id=368
 
-Tmux: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+Tmux: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/ (modified)
 
 Terminal: https://github.com/chriskempson/base16-gnome-terminal (Modified Color
 Scheme)
