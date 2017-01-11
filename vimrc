@@ -78,6 +78,10 @@ augroup vimrcEx
   " Automatically wrap at 80 characters for Markdown
   autocmd BufRead,BufNewFile *.md setlocal textwidth=80
   autocmd BufRead,BufNewFile *.tex setlocal textwidth=80
+
+  " Automatically open quickfix after searching with grep and friends
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l*    lwindow
 augroup END
 
 " Softtabs, 4 spaces
@@ -115,6 +119,10 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+" Better nvigation in wrapped lines
+nnoremap j gj
+nnoremap k gk
 
 " Easy tab navigation
 nnoremap <Leader>p :tabprevious<CR>
