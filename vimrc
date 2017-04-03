@@ -183,8 +183,9 @@ let g:tmux_navigator_save_on_switch = 1
 hi CursorLineNr guifg=#050505
 
 " Numbers
+set relativenumber
 set number
-set numberwidth=4
+set numberwidth=3
 
 " Tab completion
 " will insert tab at beginning of line,
