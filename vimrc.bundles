@@ -28,6 +28,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'lervag/vimtex'
 Plugin 'skwp/greplace.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'sheerun/vim-polyglot'
 
 filetype on
 call vundle#end()
