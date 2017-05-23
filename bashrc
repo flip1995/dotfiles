@@ -7,8 +7,6 @@
 PS1='[\u@\h \W]\$ '
 
 export EDITOR=vim
-# The Fuck!!!
-eval $(thefuck --alias)
 
 # Aliases
 ## Make aliases work with sudo (http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo)
