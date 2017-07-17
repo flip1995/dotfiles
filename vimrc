@@ -99,6 +99,7 @@ set undoreload=10000
 " }}}
 
 " Usability {{{
+let g:NERDTreeWinSize=31
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
@@ -160,7 +161,7 @@ map <Leader>gp :Gpush<CR>
 
 " Toggle Comment
 nnoremap <Leader>t :TComment<CR>
-nnoremap <Leader>t :TCommentBlock<CR>
+vnoremap <Leader>t :TCommentBlock<CR>
 
 " Toggle NERDtree with F8
 map <F8> :NERDTreeToggle<CR>
@@ -196,9 +197,11 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_rust_checkers=['rustc']
+let g:syntastic_rust_checkers = ['cargo']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_loc_list_height = 5
 " }}}
 
 " vim <3 tmux {{{

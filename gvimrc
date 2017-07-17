@@ -12,3 +12,7 @@ if filereadable($HOME . "/.gvimrc.local")
   source ~/.gvimrc.local
 endif
 
+" Color scheme
+syntax enable
+set background=dark
+colorscheme solarized
