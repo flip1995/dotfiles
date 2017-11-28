@@ -161,7 +161,7 @@ map <Leader>gp :Gpush<CR>
 
 " Toggle Comment
 nnoremap <Leader>t :TComment<CR>
-vnoremap <Leader>t :TCommentBlock<CR>
+vnoremap <Leader>t :TComment<CR>
 
 " Toggle NERDtree with F8
 map <F8> :NERDTreeToggle<CR>
