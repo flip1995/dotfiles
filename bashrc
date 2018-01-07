@@ -31,3 +31,5 @@ alias svim='sudo vim'
 alias gits='git status'
 ## Tmux easy session attach
 alias tmuxa='tmux attach -t'
+## Always start tmux from $HOME/ directory
+alias tmux='(cd $HOME; tmux)'
