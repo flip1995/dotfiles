@@ -96,6 +96,9 @@ set undoreload=10000
 " Searching
 :set smartcase
 :set ignorecase
+
+" Use vimtex, instead of polyglot
+let g:polyglot_disabled = ['latex']
 " }}}
 
 " Usability {{{

@@ -8,6 +8,11 @@ PS1='[\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;34m\]\h \[\033[00m\]\W]\$ '
 
 export EDITOR=vim
 
+# Functions
+prevent_dir_change_tmux() {
+    (cd .; $1 "$2")
+}
+
 # Aliases
 ## Make aliases work with sudo (http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo)
 alias sudo='sudo '
@@ -33,3 +38,7 @@ alias gits='git status'
 alias tmuxa='tmux attach -t'
 ## Always start tmux from $HOME/ directory
 alias tmux='(cd $HOME; tmux)'
+## If you have evince running in a pane and open a new pane,
+## the new pane will be opened in the same directory as the evince-pane
+alias evince='prevent_dir_change_tmux evince'
+
