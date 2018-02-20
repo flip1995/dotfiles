@@ -48,15 +48,8 @@ $ sudo pacman -S tmux
 
 ---
 ### Color schemes
-I'm using color schemes for vim, tmux and the gnome terminal from different
-sources:
-
-Vim: http://www.vim.org/scripts/script.php?script_id=368
-
-Tmux: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/ (modified)
-
-Terminal: https://github.com/chriskempson/base16-gnome-terminal (Modified Color
-Scheme)
+I'm using color schemes for [gVim](https://github.com/altercation/vim-colors-solarized), [tmux](http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/) (modified) and the [gnome terminal](https://github.com/chriskempson/base16-gnome-terminal) (modified) from different
+sources.
 
 To install the terminal color scheme execute the command `source
 ~/dotfiles/termColorScheme.sh` and restart your terminal.
