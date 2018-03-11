@@ -26,18 +26,18 @@ exec_cmd_in_dir() {
 alias sudo='sudo '
 ## cd.. == cd ..
 alias cd..='cd ..'
-## Go to previous directory
-alias cb='cd "$OLDPWD"'
 ## Color the ls output
 alias ls='ls --color=auto'
+## Color the diff output
+alias diff='diff --color=auto'
+## Color the grep output
+alias grep='grep --color=auto'
 ## Show hidden files
 alias la='ls -a'
 ## Use a listing format
 alias l='ls -l'
 ## Use a long listing format
 alias ll='ls -la'
-## Color the grep output
-alias grep='grep --color=auto'
 ## Run vim as sudo
 alias svim='sudo vim'
 ## Git status
