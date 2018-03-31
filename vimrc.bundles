@@ -27,8 +27,9 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'lervag/vimtex'
 Plugin 'skwp/greplace.vim'
-Plugin 'rust-lang/rust.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'rust-lang/rust.vim'
+Plugin 'Valloric/YouCompleteMe'
 
 filetype on
 call vundle#end()

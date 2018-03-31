@@ -207,6 +207,13 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_loc_list_height = 5
 " }}}
 
+" {{{ YCM
+let g:ycm_python_binary_path = 'python'
+let g:ycm_goto_buffer_command = 'horizontal-split'
+
+nnoremap gd :YcmCompleter GoTo<CR>
+" }}}
+
 " vim <3 tmux {{{
 let g:tmux_navigator_no_mappings = 1
 
