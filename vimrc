@@ -204,7 +204,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_loc_list_height = 5
+let g:syntastic_loc_list_height = 6
 " }}}
 
 " {{{ YCM

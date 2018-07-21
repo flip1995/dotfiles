@@ -4,7 +4,7 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='[\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;34m\]\h \[\033[00m\]\W]\$ '
+PS1='[\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;34m\]\h\[\033[00m\]▶ \W]\$ '
 
 export EDITOR=vim
 source /usr/share/bash-completion/bash_completion
