@@ -7,6 +7,7 @@
 PS1='[\[\033[01;31m\]\u\[\033[00m\]@\[\033[01;34m\]\h\[\033[00m\]▶ \W]\$ '
 
 export EDITOR=vim
+export PATH=$HOME/local/bin:$PATH
 source /usr/share/bash-completion/bash_completion
 
 # Functions
@@ -21,6 +22,16 @@ exec_cmd_in_dir() {
         (cd $dir; $cmd "$@")
     fi
 }
+
+if which tmux >/dev/null 2>&1; then
+    # if no session is started, start a new session
+    [[ -z "$TMUX" ]] && tmux
+
+    # when quitting tmux, try to attach
+    while test -z $TMUX; do
+        tmux attach || break
+    done
+fi
 
 # Aliases
 ## Make aliases work with sudo (http://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo)
@@ -45,8 +56,6 @@ alias svim='sudo vim'
 alias gits='git status'
 ## Tmux easy session attach
 alias tmuxa='tmux attach -t'
-## Always start tmux from $HOME/ directory
-alias tmux='exec_cmd_in_dir tmux $HOME'
 ## Prevent some commands from temporary switching directory
 alias evince='exec_cmd_in_dir evince .'
 alias man='exec_cmd_in_dir man .'
