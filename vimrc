@@ -180,6 +180,9 @@ map <Leader>* *<C-O>:%s///gn<CR>
 
 " Reload .vimrc
 map <F5> :source $MYVIMRC<CR>
+
+" elm-vim keybindings
+let g:elm_setup_keybindings = 0
 " }}}
 
 " Airline {{{
@@ -203,6 +206,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_loc_list_height = 6
+let g:elm_syntastic_show_warnings = 1
 " }}}
 
 " {{{ YCM
@@ -210,6 +214,9 @@ let g:ycm_python_binary_path = 'python'
 let g:ycm_goto_buffer_command = 'horizontal-split'
 
 nnoremap gd :YcmCompleter GoTo<CR>
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
 " }}}
 
 " vim <3 tmux {{{

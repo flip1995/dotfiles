@@ -60,3 +60,5 @@ alias tmuxa='tmux attach -t'
 alias evince='exec_cmd_in_dir evince .'
 alias man='exec_cmd_in_dir man .'
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
