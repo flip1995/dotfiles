@@ -1,3 +1,4 @@
-vim/bundle/*
-!vim/bundle/.gitkeep
 uninstall
+vim/plugged/*
+vim/autoload/*
+vim/view/*
