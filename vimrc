@@ -28,8 +28,6 @@ set numberwidth=3
 
 set backspace=2
 set nocompatible
-set nobackup
-set nowritebackup
 set noswapfile
 set history=500
 set showcmd
@@ -37,6 +35,8 @@ set incsearch
 set hlsearch
 set laststatus=2
 set autowrite
+
+set backupdir=~/.vim/backup/
 
 set t_Co=256
 
@@ -101,20 +101,8 @@ let g:polyglot_disabled = ['latex']
 
 " Usability {{{
 let g:NERDTreeWinSize=31
-" Tab completion
-" will insert tab at beginning of line,
-" will use completion if not at beginning
+
 set wildmode=list:longest,list:full
-set complete=.,w,t
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -203,20 +191,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_rust_checkers = ['cargo']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_loc_list_height = 6
 let g:elm_syntastic_show_warnings = 1
-" }}}
-
-" {{{ YCM
-let g:ycm_python_binary_path = 'python'
-let g:ycm_goto_buffer_command = 'horizontal-split'
-
-nnoremap gd :YcmCompleter GoTo<CR>
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
 " }}}
 
 " vim <3 tmux {{{
@@ -246,4 +223,25 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+" }}}
+
+" LSP {{{
+set hidden
+let completeopt = "menuone"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:LanguageClient_autoStart = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
+noremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+            \ 'min_pattern_length': 1,
+            \ })
 " }}}

@@ -23,11 +23,18 @@ Plug 'terryma/vim-expand-region'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lervag/vimtex'
-Plug 'sheerun/vim-polyglot'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'Valloric/YouCompleteMe', { 'for': 'rust', 'do': 'python3 install.py --rust-completer' }
-Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Code Completion
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp', { 'do': 'pip3 install neovim' }
+Plug 'roxma/vim-hug-neovim-rpc'
+
+" Language support
+Plug 'sheerun/vim-polyglot'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'ElmCast/elm-vim', { 'for': 'elm' }
 
 call plug#end()
