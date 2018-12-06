@@ -120,6 +120,21 @@ function! s:RemoveTrailingWhitespaces()
 endfunction
 
 au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
+
+au FileType qf call AdjustWindowHeight(3, 7)
+function! AdjustWindowHeight(minheight, maxheight)
+    let l = 1
+    let n_lines = 0
+    let w_width = winwidth(0)
+    while l <= line('$')
+        " number to float for division
+        let l_len = strlen(getline(l)) + 0.0
+        let line_width = l_len/w_width
+        let n_lines += float2nr(ceil(line_width))
+        let l += 1
+    endw
+    exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
+endfunction
 " }}}
 
 " Keymappings {{{
@@ -239,9 +254,11 @@ let g:LanguageClient_serverCommands = {
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
+            \ 'auto_complete_delay': 5,
             \ 'min_pattern_length': 1,
             \ })
 " }}}
