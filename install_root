@@ -14,6 +14,7 @@ hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting
 # symlinks
 ## tmux
 ln -s -f $USER_HOME/dotfiles/tmux.conf $USER_HOME/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 ## bash
 ln -s -f $USER_HOME/dotfiles/bash_profile $USER_HOME/.bash_profile
 ln -s -f $USER_HOME/dotfiles/bashrc $USER_HOME/.bashrc
