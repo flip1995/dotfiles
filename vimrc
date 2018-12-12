@@ -249,6 +249,7 @@ let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['/usr/bin/pyls'],
     \ }
 
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
