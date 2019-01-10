@@ -54,6 +54,20 @@ alias ll='ls -la'
 alias svim='sudo vim'
 ## Git status
 alias gits='git status'
+## Git WIP commit
+git() {
+    if [[ $@ == "wip" ]]; then
+        command git commit -a -m "WIP";
+    elif [[ $@ == "unwip" ]]; then
+        if [[ $(git reflog -1 | sed 's/^.*: //') == "WIP" ]]; then
+            command git reset HEAD~1
+        else
+            (>&2 echo "No WIP commit to unwip")
+        fi;
+    else
+        command git "$@";
+    fi;
+}
 ## Tmux easy session attach
 alias tmuxa='tmux attach -t'
 ## Prevent some commands from temporary switching directory

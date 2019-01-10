@@ -255,7 +255,7 @@ let g:LanguageClient_serverCommands = {
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option({
