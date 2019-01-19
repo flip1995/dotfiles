@@ -7,8 +7,8 @@ hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting
 ln -s -f $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 ## bash
-ln -s -f $HOME/dotfiles/bash_profile $HOME/.bash_profile
-ln -s -f $HOME/dotfiles/bashrc $HOME/.bashrc
+ln -s -f $HOME/dotfiles/zprofile $HOME/.zprofile
+ln -s -f $HOME/dotfiles/zshrc $HOME/.zshrc
 ## vim
 ln -s -f $HOME/dotfiles/vimrc $HOME/.vimrc
 ln -s -f $HOME/dotfiles/gvimrc $HOME/.gvimrc
