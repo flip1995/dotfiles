@@ -121,7 +121,7 @@ endfunction
 
 au BufWritePre * :call <SID>RemoveTrailingWhitespaces()
 
-au FileType qf call AdjustWindowHeight(3, 7)
+au FileType qf call AdjustWindowHeight(0, 7)
 function! AdjustWindowHeight(minheight, maxheight)
     let l = 1
     let n_lines = 0
