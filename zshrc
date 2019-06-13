@@ -76,7 +76,7 @@ git() {
     if [[ $@ == "wip" ]]; then
         command git commit -a -m "WIP";
     elif [[ $@ == "unwip" ]]; then
-        if [[ $(git reflog -1 | sed 's/^.*: //') == "WIP" ]]; then
+        if [[ $(git log -1 --pretty=oneline | sed 's/^[a-f0-9]*\s//') == "WIP" ]]; then
             command git reset HEAD~1
         else
             (>&2 echo "No WIP commit to unwip")
