@@ -202,6 +202,9 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = {
+    \ "mode": "active",
+    \ "passive_filetypes": ["rust"] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -249,8 +252,10 @@ let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['/usr/bin/pyls'],
+    \ 'python': ['$HOME/.local/bin/pyls'],
     \ }
+
+let g:LanguageClient_settingsPath = "$HOME/.vim/language_client_settings.json"
 
 noremap <silent> H :call LanguageClient_textDocument_hover()<CR>
 noremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
