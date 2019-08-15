@@ -90,6 +90,31 @@ alias tmuxa='tmux attach -t'
 ## Prevent some commands from temporary switching directory
 alias evince='exec_cmd_in_dir evince .'
 alias man='exec_cmd_in_dir man .'
+# watch a list of files/dirs and execute a command on change
+# usage: `watch -f dir_name -c cmd`
+watch() {
+    while [[ "$#" -gt 0 ]]
+    do
+        case $1 in
+            -h|--help)
+                echo "usage: watch -f dir_name -c cmd"
+                return
+                ;;
+            -f|--file)
+                local FILE="$2"
+                ;;
+            -c|--command)
+                shift
+                break
+                ;;
+        esac
+        shift
+    done
+
+    while inotifywait -e modify -r $FILE; do
+        $@
+    done
+}
 
 # autoload zkbd
 # function zkbd_file() {
