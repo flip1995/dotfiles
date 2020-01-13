@@ -24,7 +24,7 @@ bindkey -v
 [[ $- != *i* ]] && return
 PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 
-export EDITOR=vim
+export EDITOR=nvim
 export PATH=$HOME/.local/bin:$PATH
 
 if which tmux >/dev/null 2>&1; then
@@ -101,6 +101,9 @@ watch() {
         $@
     done
 }
+if command -v nvim 2>/dev/null; then
+    alias vim=nvim
+fi
 
 autoload zkbd
 function zkbd_file() {

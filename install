@@ -10,16 +10,16 @@ git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 ln -s -f $HOME/dotfiles/zprofile $HOME/.zprofile
 ln -s -f $HOME/dotfiles/zshrc $HOME/.zshrc
 ## vim
-ln -s -f $HOME/dotfiles/vimrc $HOME/.vimrc
-ln -s -f $HOME/dotfiles/gvimrc $HOME/.gvimrc
-ln -s -f $HOME/dotfiles/vimrc.bundles $HOME/.vimrc.bundles
-ln -s -f $HOME/dotfiles/vim $HOME/
-mv -T $HOME/vim $HOME/.vim
+mkdir -p $HOME/.config/nvim
+ln -s -f $HOME/dotfiles/init.vim $HOME/.config/nvim/init.vim
+ln -s -f $HOME/dotfiles/plugins.vim $HOME/.config/nvim/plugins.vim
+ln -s -f $HOME/dotfiles/spell $HOME/.config/nvim/
+ln -s -f $HOME/dotfiles/init.vim $HOME/.vimrc
 
 echo "Symlinks successfully created for ~/dotfiles."
 
 # Install fonts
-if ! fc-list | grep -i Sauce\ Code\ Powerline\ Regular.otf >/dev/null; then
+if ! fc-list | grep -i "Source Code Pro.*.otf" >/dev/null; then
     git clone https://github.com/powerline/fonts.git $HOME/fonts
     sh $HOME/fonts/install.sh
     echo "Set your terminal font to 'Source Code Pro'."
