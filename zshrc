@@ -25,20 +25,7 @@ bindkey -v
 PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 
 export EDITOR=vim
-export PATH=$HOME/local/bin:$PATH
-
-# Functions
-exec_cmd_in_dir() {
-    if [[ $# -eq 2 ]]; then
-        (cd "$2"; $1)
-    elif [[ $# -ge 3 ]]; then
-        cmd=$1
-        dir="$2"
-        shift
-        shift
-        (cd $dir; $cmd "$@")
-    fi
-}
+export PATH=$HOME/.local/bin:$PATH
 
 if which tmux >/dev/null 2>&1; then
     # if no session is started, start a new session
@@ -81,15 +68,14 @@ git() {
         else
             (>&2 echo "No WIP commit to unwip")
         fi;
+    elif [[ $@ == "push --fwl" ]]; then
+        command git push --force-with-lease
     else
         command git "$@";
     fi;
 }
 ## Tmux easy session attach
 alias tmuxa='tmux attach -t'
-## Prevent some commands from temporary switching directory
-alias evince='exec_cmd_in_dir evince .'
-alias man='exec_cmd_in_dir man .'
 # watch a list of files/dirs and execute a command on change
 # usage: `watch -f dir_name -c cmd`
 watch() {
