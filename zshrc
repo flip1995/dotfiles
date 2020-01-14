@@ -27,7 +27,7 @@ PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 export EDITOR=nvim
 export PATH=$HOME/.local/bin:$PATH
 
-if which tmux >/dev/null 2>&1; then
+if command -v tmux >/dev/null 2>&1; then
     # if no session is started, start a new session
     [[ -z "$TMUX" ]] && tmux
 
