@@ -101,7 +101,7 @@ watch() {
         $@
     done
 }
-if command -v nvim 2>/dev/null; then
+if command -v nvim >/dev/null 2>&1; then
     alias vim=nvim
 fi
 

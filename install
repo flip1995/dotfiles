@@ -1,6 +1,6 @@
 #!/bin/bash
 
-hash git 2>/dev/null || { echo >&2 "Make sure, that 'git' is installed. Aborting."; exit 1; }
+command -v git >/dev/null 2>&1 || { echo "Make sure, that 'git' is installed. Aborting." >&2; exit 1; }
 
 # symlinks
 ## tmux
