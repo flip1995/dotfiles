@@ -70,6 +70,8 @@ git() {
         fi;
     elif [[ $@ == "push --fwl" ]]; then
         command git push --force-with-lease
+    elif [[ $@ == "corig" ]]; then
+        command git clean **/*.orig -f
     else
         command git "$@";
     fi;
