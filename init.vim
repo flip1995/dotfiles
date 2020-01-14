@@ -67,6 +67,11 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " NERDTree {{{1
 let g:NERDTreeWinSize=31
 
+" rust.vim {{{1
+let g:rustfmt_autosave_if_config_present = 1
+let g:rustc_clip_command = 'xclip -selection clipboard'
+let g:rustfmt_command = 'rustup run nightly rustfmt'
+
 " Spellcheck {{{1
 set spelllang=en_us,de_de
 

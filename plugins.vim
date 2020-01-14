@@ -30,7 +30,9 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'rust-lang/rust.vim'
 
+Plug 'mattn/webapi-vim'
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
