@@ -54,8 +54,8 @@ alias la='ls -a'
 alias l='ls -l'
 ## Use a long listing format
 alias ll='ls -la'
-## Run vim as sudo
-alias svim='sudo vim'
+## Run nvim as sudo
+alias svim='sudo nvim'
 ## Git status
 alias gits='git status'
 ## Git WIP commit
