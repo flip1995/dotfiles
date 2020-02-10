@@ -1,4 +1,5 @@
 # The following lines were added by compinstall
+fpath=($HOME/.zcomp $fpath)
 
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' special-dirs true
@@ -25,7 +26,7 @@ bindkey -v
 PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 
 export EDITOR=nvim
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH
 
 if command -v tmux >/dev/null 2>&1; then
     # if no session is started, start a new session
@@ -72,6 +73,13 @@ git() {
         command git push --force-with-lease
     elif [[ $@ == "corig" ]]; then
         command git clean **/*.orig -f
+    elif [[ $1 == "rad" ]]; then
+        if [[ -n $2 ]]; then
+            REPO=$(basename $(git config --get remote.origin.url))
+            git remote add $2 git@github.com:$2/$REPO --fetch
+        else
+            echo "usage: git rad <name>"
+        fi
     else
         command git "$@";
     fi;
