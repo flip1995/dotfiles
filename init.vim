@@ -11,7 +11,7 @@ set numberwidth=3
 " Deoplete {{{1
 let g:deoplete#enable_at_startup=1
 call deoplete#custom#option({
-            \ 'auto_complete_delay': 50,
+            \ 'auto_complete_delay': 10,
             \ })
 
 " Keybindings {{{1
@@ -56,8 +56,9 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 " LanguageClient-neovim {{{1
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['ra_lsp_server'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python': ['$HOME/.local/bin/pyls'],
+    \ 'lua': ['lua-lsp'],
     \ }
 
 nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
@@ -108,6 +109,7 @@ let loaded_matchit = 1
 
 set hidden
 
+set ignorecase
 set smartcase
 
 set cmdheight=2
