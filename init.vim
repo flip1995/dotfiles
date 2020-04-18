@@ -8,11 +8,6 @@ set number
 set relativenumber
 set numberwidth=3
 
-" Deoplete {{{1
-let g:deoplete#enable_at_startup=1
-call deoplete#custom#option({
-            \ 'auto_complete_delay': 10,
-            \ })
 
 " Keybindings {{{1
 let mapleader=","
@@ -50,20 +45,56 @@ nnoremap <C-l> <C-w>l
 " Fold close
 nnoremap <leader>cf :foldclose<CR>
 
+" coc.nvim {{{1
+set shortmess+=c
+set signcolumn=yes
+
 " Completion navigation with tab
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-" LanguageClient-neovim {{{1
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['$HOME/.local/bin/pyls'],
-    \ 'lua': ['lua-lsp'],
-    \ }
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-nnoremap <silent> H :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `gnd` and `gpd` to navigate diagnostics
+nmap <silent> gnd <Plug>(coc-diagnostic-prev)
+nmap <silent> gpd <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use H to show documentation in preview window.
+nnoremap <silent> H :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <silent><F2> <Plug>(coc-rename)
+
+" Applying codeAction to the selected region.
+nmap <leader>a <Plug>(coc-codeaction-selected)
+" Apply AutoFix to problem on the current line.
+nmap <leader>x <Plug>(coc-fix-current)"
 
 " NERDTree {{{1
 let g:NERDTreeWinSize=31
@@ -113,6 +144,8 @@ set ignorecase
 set smartcase
 
 set cmdheight=2
+
+set updatetime=300
 
 function! s:RemoveTrailingWhitespaces()
     "Save last cursor position

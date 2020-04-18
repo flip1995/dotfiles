@@ -13,6 +13,7 @@ ln -s -f $HOME/dotfiles/zshrc $HOME/.zshrc
 mkdir -p $HOME/.config/nvim
 ln -s -f $HOME/dotfiles/init.vim $HOME/.config/nvim/init.vim
 ln -s -f $HOME/dotfiles/plugins.vim $HOME/.config/nvim/plugins.vim
+ln -s -f $HOME/dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
 ln -s -f $HOME/dotfiles/spell $HOME/.config/nvim/
 ln -s -f $HOME/dotfiles/init.vim $HOME/.vimrc
 
