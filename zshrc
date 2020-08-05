@@ -26,7 +26,6 @@ bindkey -v
 PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 
 export EDITOR=nvim
-export PATH=$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$PATH
 
 if command -v tmux >/dev/null 2>&1; then
     # if no session is started, start a new session
