@@ -1,4 +1,5 @@
 {
+    "coc.preferences.formatOnSaveFiletypes": ["go"],
     "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer",
     "languageserver": {
         "bash": {
@@ -9,6 +10,5 @@
         }
     },
     "go.checkForUpdates": "ask",
-    "snippets.priority": 100,
-    "suggest.noselect": false
+    "snippets.priority": 100
 }
