@@ -102,6 +102,9 @@ nmap <leader>a <Plug>(coc-codeaction-selected)
 " Apply AutoFix to problem on the current line.
 nmap <leader>x <Plug>(coc-fix-current)
 
+" Go {{{1
+au FileType go set noexpandtab
+
 " NERDTree {{{1
 let g:NERDTreeWinSize=31
 
