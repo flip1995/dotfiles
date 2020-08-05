@@ -55,7 +55,7 @@ alias l='ls -l'
 ## Use a long listing format
 alias ll='ls -la'
 ## Run nvim as sudo
-alias svim='sudo nvim'
+command -v nvim >/dev/null 2>&1 && alias svim='sudo nvim' || alias svim='sudo vim'
 ## Git status
 alias gits='git status'
 ## Git WIP commit
@@ -84,7 +84,7 @@ git() {
     fi;
 }
 ## Tmux easy session attach
-alias tmuxa='tmux attach -t'
+command -v tmux >/dev/null 2>&1 && alias tmuxa='tmux attach -t'
 # watch a list of files/dirs and execute a command on change
 # usage: `watch -f dir_name -c cmd`
 watch() {
