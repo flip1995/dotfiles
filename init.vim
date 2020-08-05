@@ -61,6 +61,12 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Use <cr> to confirm completion
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -94,7 +100,7 @@ nmap <silent><F2> <Plug>(coc-rename)
 " Applying codeAction to the selected region.
 nmap <leader>a <Plug>(coc-codeaction-selected)
 " Apply AutoFix to problem on the current line.
-nmap <leader>x <Plug>(coc-fix-current)"
+nmap <leader>x <Plug>(coc-fix-current)
 
 " NERDTree {{{1
 let g:NERDTreeWinSize=31

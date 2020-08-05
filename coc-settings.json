@@ -7,5 +7,7 @@
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
         }
-    }
+    },
+    "snippets.priority": 100,
+    "suggest.noselect": false
 }
