@@ -6,9 +6,10 @@ command -v git >/dev/null 2>&1 || { echo "Make sure, that 'git' is installed. Ab
 ## tmux
 ln -s -f $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-## bash
+## zsh
 ln -s -f $HOME/dotfiles/zprofile $HOME/.zprofile
 ln -s -f $HOME/dotfiles/zshrc $HOME/.zshrc
+ln -s -f $HOME/dotfiles/zcomp $HOME/.zcomp
 ## vim
 mkdir -p $HOME/.config/nvim
 ln -s -f $HOME/dotfiles/init.vim $HOME/.config/nvim/init.vim
