@@ -48,6 +48,7 @@ nnoremap <leader>cf :foldclose<CR>
 " coc.nvim {{{1
 set shortmess+=c
 set signcolumn=yes
+set statusline^=%{coc#status()}
 
 " Completion navigation with tab
 inoremap <silent><expr> <TAB>
@@ -104,6 +105,9 @@ nmap <leader>x <Plug>(coc-fix-current)
 
 " Go {{{1
 au FileType go set noexpandtab
+
+" Python {{{1
+let g:python3_host_prog = '/home/pkrones/.local/share/virtualenvs/nvim-*/bin/python'
 
 " NERDTree {{{1
 let g:NERDTreeWinSize=31

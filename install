@@ -9,6 +9,7 @@ git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 ## zsh
 ln -s -f $HOME/dotfiles/zprofile $HOME/.zprofile
 ln -s -f $HOME/dotfiles/zshrc $HOME/.zshrc
+ln -s -f $HOME/dotfiles/zshenv $HOME/.zshenv
 ln -s -f $HOME/dotfiles/zcomp $HOME/.zcomp
 ## vim
 mkdir -p $HOME/.config/nvim
@@ -17,6 +18,16 @@ ln -s -f $HOME/dotfiles/plugins.vim $HOME/.config/nvim/plugins.vim
 ln -s -f $HOME/dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
 ln -s -f $HOME/dotfiles/spell $HOME/.config/nvim/
 ln -s -f $HOME/dotfiles/init.vim $HOME/.vimrc
+ln -s -f $HOME/dotfiles/Pipfile $HOME/.config/nvim/Pipfile
+if command -v pipenv &> /dev/null; then
+    pushd $HOME/.config/nvim
+    pipenv install
+    popd
+else
+    echo "WARNING: \`pipenv\` is not installed"
+    echo "To get reliable python support in nvim run"
+    echo "\`pipenv install\` in \`$HOME/.config/nvim\`"
+fi
 
 echo "Symlinks successfully created for ~/dotfiles."
 
@@ -26,6 +37,16 @@ if ! fc-list | grep -i "Source Code Pro.*.otf" >/dev/null; then
     sh $HOME/fonts/install.sh
     echo "Set your terminal font to 'Source Code Pro'."
     rm -rf $HOME/fonts
+fi
+
+if command -v pipenv &> /dev/null; then
+    pushd "$HOME/.config/nvim" || exit 0
+    pipenv install
+    popd || exit 0
+else
+    echo "WARNING: \`pipenv\` is not installed"
+    echo "To get reliable python support in nvim run"
+    echo "\`pipenv install\` in \`$HOME/.config/nvim\`"
 fi
 
 exit 0
