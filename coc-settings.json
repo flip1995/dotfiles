@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["go"],
+    "coc.preferences.formatOnSaveFiletypes": ["go", "python"],
     "rust-analyzer.serverPath": "rust-analyzer",
     "rust-analyzer.checkOnSave.extraArgs": ["--target-dir", "target/rust-analyzer"],
     "languageserver": {
@@ -12,5 +12,7 @@
     },
     "go.checkForUpdates": "ask",
     "python.jediEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": false,
     "snippets.priority": 100
 }

@@ -56,6 +56,8 @@ alias l='ls -l'
 alias ll='ls -la'
 ## Run nvim as sudo
 command -v nvim >/dev/null 2>&1 && alias svim='sudo nvim' || alias svim='sudo vim'
+## Run nvim in pipenv
+command -v nvim >/dev/null 2>&1 && alias pvim='pipenv run nvim' || alias pvim='pipenv run vim'
 ## Git status
 alias gits='git status'
 ## Git WIP commit
