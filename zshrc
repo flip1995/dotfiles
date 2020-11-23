@@ -113,6 +113,7 @@ watch() {
     done
 }
 command -v nvim >/dev/null 2>&1 && alias vim=nvim
+command -v fuck >/dev/null 2>&1 && eval $(thefuck --alias)
 
 autoload zkbd
 function zkbd_file() {
