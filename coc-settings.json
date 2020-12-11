@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": ["go", "python"],
+    "coc.preferences.formatOnSaveFiletypes": ["go", "python", "rust"],
     "rust-analyzer.serverPath": "rust-analyzer",
     "rust-analyzer.checkOnSave.extraArgs": ["--target-dir", "target/rust-analyzer"],
     "languageserver": {
