@@ -107,7 +107,7 @@ nmap <leader>x <Plug>(coc-fix-current)
 au FileType go set noexpandtab
 
 " Python {{{1
-let g:python3_host_prog = '/home/pkrones/.local/share/virtualenvs/nvim-*/bin/python'
+let g:python3_host_prog = '/home/pkrones/.local/share/virtualenvs/dotfiles-*/bin/python'
 
 " NERDTree {{{1
 let g:NERDTreeWinSize=31
