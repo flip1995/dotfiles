@@ -1,15 +1,14 @@
 #!/bin/sh
-"""
-Usage:
 
-1. Add this script to your PATH so git can find it.
-2. Run 'git create-changelog' to create the changelog for the latest commit.
-   This will update the ChangeLog file in the top-level directory of the
-   repository.
-
-If you want to generate the ChangeLog for a specific commit run
-'GIT_COMMIT=<hash> git create-changelog'
-"""
+# Usage:
+#
+# 1. Add this script to your PATH so git can find it.
+# 2. Run 'git create-changelog' to create the changelog for the latest commit.
+#    This will update the ChangeLog file in the top-level directory of the
+#    repository.
+#
+# If you want to generate the ChangeLog for a specific commit run
+# 'GIT_COMMIT=<hash> git create-changelog'
 
 set -e
 
