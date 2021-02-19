@@ -1,7 +1,8 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["go", "python", "rust"],
-    "rust-analyzer.serverPath": "rust-analyzer",
+    "rust-analyzer.server.path": "rust-analyzer",
     "rust-analyzer.checkOnSave.extraArgs": ["--target-dir", "target/rust-analyzer"],
+    "rust-analyzer.cargo.allFeatures": true,
     "languageserver": {
         "bash": {
             "command": "bash-language-server",
@@ -12,6 +13,7 @@
     },
     "go.checkForUpdates": "ask",
     "python.jediEnabled": false,
+    "python.pipenvPath": "pipenv",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintEnabled": false,
     "snippets.priority": 100
