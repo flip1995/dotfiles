@@ -208,6 +208,7 @@ augroup vimrcEx
     autocmd FileType markdown setlocal spell
     autocmd BufRead,BufNewFile *.tex setlocal spell
     autocmd FileType gitcommit setlocal spell
+    autocmd FileType changelog setlocal spell
 
     " Automatically wrap at 80 characters for text files
     autocmd FileType text setlocal textwidth=80
