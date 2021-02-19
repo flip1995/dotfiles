@@ -28,13 +28,13 @@ PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 export EDITOR=nvim
 
 if command -v tmux >/dev/null 2>&1; then
-    # if no session is started, start a new session
-    [[ -z "$TMUX" ]] && tmux
-
     # when quitting tmux, try to attach
     while test -z $TMUX; do
         tmux attach || break
     done
+
+    # if no session is started, start a new session
+    [[ -z "$TMUX" ]] && tmux
 fi
 
 # Aliases
