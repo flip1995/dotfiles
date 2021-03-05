@@ -22,6 +22,11 @@ unsetopt BASH_AUTO_LIST
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+# Setup editor command editing
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd ' ' edit-command-line
+
 [[ $- != *i* ]] && return
 PS1='[%B%F{red}%n%F{white}%b@%B%F{blue}%M%b%F{white}▶ %1~]$ '
 
