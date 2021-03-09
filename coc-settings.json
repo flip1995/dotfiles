@@ -3,6 +3,8 @@
     "rust-analyzer.server.path": "rust-analyzer",
     "rust-analyzer.checkOnSave.extraArgs": ["--target-dir", "target/rust-analyzer"],
     "rust-analyzer.cargo.allFeatures": true,
+    "rust-analyzer.diagnostics.disabled": ["macro-error", "unresolved-proc-macro"],
+    "rust-analyzer.rustcSource": "discover",
     "languageserver": {
         "bash": {
             "command": "bash-language-server",
