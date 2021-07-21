@@ -78,8 +78,8 @@ imap <C-l> <Plug>(coc-snippets-expand)
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `gnd` and `gpd` to navigate diagnostics
-nmap <silent> gnd <Plug>(coc-diagnostic-prev)
-nmap <silent> gpd <Plug>(coc-diagnostic-next)
+nmap <silent> gnd <Plug>(coc-diagnostic-next)
+nmap <silent> gpd <Plug>(coc-diagnostic-prev)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
