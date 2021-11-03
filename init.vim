@@ -166,6 +166,12 @@ set cmdheight=2
 
 set updatetime=300
 
+if len(globpath(&rtp, "colors/solarized.vim")) != 0
+    syntax enable
+    set background=dark
+    colorscheme solarized
+endif
+
 function! s:RemoveTrailingWhitespaces()
     "Save last cursor position
     let l = line(".")
