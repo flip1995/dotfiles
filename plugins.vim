@@ -30,6 +30,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'rust-lang/rust.vim'
+Plug 'github/copilot.vim'
 
 Plug 'mattn/webapi-vim'
 Plug 'airblade/vim-gitgutter'
