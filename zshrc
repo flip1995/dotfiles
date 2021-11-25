@@ -119,6 +119,7 @@ watch() {
 }
 command -v nvim >/dev/null 2>&1 && alias vim=nvim
 command -v fuck >/dev/null 2>&1 && eval $(thefuck --alias)
+alias rustdown='for tc in $(rustup toolchain list | grep "nightly-20*"); do rustup toolchain uninstall $tc; done'
 
 autoload zkbd
 function zkbd_file() {
