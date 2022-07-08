@@ -57,6 +57,7 @@ set statusline^=%{coc#status()}
 hi Pmenu ctermbg=0
 hi Pmenu ctermfg=12
 hi CocFloating ctermbg=0
+hi link CocHintSign Pmenu
 nnoremap <nowait><expr> <C-Down> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-Down>"
 nnoremap <nowait><expr> <C-Up> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-Up>"
 inoremap <nowait><expr> <C-Down> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-Down>"
@@ -91,7 +92,7 @@ nmap <silent> gpe <Plug>(coc-diagnostic-prev-error)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
