@@ -1,0 +1,3 @@
+[submodule "spotify-cli-linux"]
+	path = spotify-cli-linux
+	url = https://github.com/flip1995/spotify-cli-linux
