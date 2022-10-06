@@ -1,7 +1,7 @@
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.local/go/bin:$PATH"
-export PATH="$HOME/dotfiles/scripts:$PATH"
-export PATH="/opt/cuda/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/go/bin"
+export PATH="$PATH:$HOME/dotfiles/scripts"
+export PATH="$PATH:/opt/cuda/bin"
 export GPG_TTY=$(tty)

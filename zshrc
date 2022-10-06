@@ -86,6 +86,13 @@ git() {
         else
             echo "usage: git rad <name>"
         fi
+    elif [[ $1 == "gone" ]]; then
+        if [[ -n $2 ]]; then
+            git remote prune $2
+        else
+            git remote prune origin
+        fi
+        git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs -I {} git branch -D {}
     else
         command git "$@";
     fi;
