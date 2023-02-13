@@ -18,6 +18,7 @@
     ],
     "rust-analyzer.cargo.features": "all",
     "rust-analyzer.rustc.source": "discover",
+    "python.formatting.provider": "black",
     "languageserver": {
         "bash": {
             "command": "bash-language-server",
