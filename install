@@ -19,8 +19,6 @@ ln -s -f "$HOME/dotfiles/coc-settings.json"     "$HOME/.config/nvim/coc-settings
 ln -s -f "$HOME/dotfiles/spell"                 "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/init.vim"              "$HOME/.vimrc"
 ln -s -f "$HOME/dotfiles/Pipfile"               "$HOME/.config/nvim/Pipfile"
-## other
-ln -s -f "$HOME/dotfiles/Xmodmap"               "$HOME/.Xmodmap"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
