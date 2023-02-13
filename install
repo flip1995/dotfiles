@@ -19,6 +19,9 @@ ln -s -f "$HOME/dotfiles/coc-settings.json"     "$HOME/.config/nvim/coc-settings
 ln -s -f "$HOME/dotfiles/spell"                 "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/init.vim"              "$HOME/.vimrc"
 ln -s -f "$HOME/dotfiles/Pipfile"               "$HOME/.config/nvim/Pipfile"
+## git
+ln -s -f "$HOME/dotfiles/gitconfig"             "$HOME/.gitconfig"
+ln -s -f "$HOME/dotfiles/gitignore"             "$HOME/.gitignore"
 
 echo "Symlinks successfully created for ~/dotfiles."
 

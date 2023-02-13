@@ -1,0 +1,8 @@
+[user]
+	email = hello@philkrones.com
+	name = Philipp Krones
+	signingkey = 1CA0DF2AF59D68A5
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = /home/pkrones/.gitignore
