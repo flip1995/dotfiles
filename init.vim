@@ -178,6 +178,8 @@ set cmdheight=2
 
 set updatetime=300
 
+set mouse=
+
 function! s:RemoveTrailingWhitespaces()
     "Save last cursor position
     let l = line(".")
