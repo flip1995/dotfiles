@@ -65,7 +65,7 @@ command -v nvim >/dev/null 2>&1 && alias svim='sudo nvim' || alias svim='sudo vi
 command -v nvim >/dev/null 2>&1 && alias pvim='pipenv run nvim' || alias pvim='pipenv run vim'
 ## Git status
 alias gits='git status'
-## Git WIP commit
+## Git commands
 git() {
     if [[ $@ == "wip" ]]; then
         command git commit -a -m "WIP";
@@ -82,17 +82,15 @@ git() {
     elif [[ $1 == "rad" ]]; then
         if [[ -n $2 ]]; then
             REPO=$(basename $(git config --get remote.origin.url))
-            git remote add $2 git@github.com:$2/$REPO --fetch
+            command git remote add $2 git@github.com:$2/$REPO --fetch
         else
             echo "usage: git rad <name>"
         fi
     elif [[ $1 == "gone" ]]; then
-        if [[ -n $2 ]]; then
-            git remote prune $2
-        else
-            git remote prune origin
-        fi
-        git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs -I {} git branch -D {}
+        command git remote prune ${2:-origin}
+        command git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs -I {} git branch -D {}
+    elif [[ $1 == "drop" ]]; then
+        command git reset --keep HEAD~${2:-1}
     else
         command git "$@";
     fi;
