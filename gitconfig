@@ -7,5 +7,5 @@
 [core]
 	excludesfile = /home/pkrones/.gitignore
 [alias]
-	wip = git commit -a -m \"WIP\"
-	corig = git clean **/*.orig -f
+	wip = !git commit -a -m \"WIP\"
+	corig = !git clean **/*.orig -f
