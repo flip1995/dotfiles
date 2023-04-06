@@ -8,12 +8,6 @@ set number
 set relativenumber
 set numberwidth=3
 
-if len(globpath(&rtp, "colors/solarized.vim")) != 0
-    syntax enable
-    set background=dark
-    colorscheme solarized
-endif
-
 " Keybindings {{{1
 let mapleader=","
 
@@ -54,10 +48,6 @@ nnoremap <leader>cf :foldclose<CR>
 set shortmess+=c
 set signcolumn=yes
 set statusline^=%{coc#status()}
-hi Pmenu ctermbg=0
-hi Pmenu ctermfg=12
-hi CocFloating ctermbg=0
-hi link CocHintSign Pmenu
 nnoremap <nowait><expr> <C-Down> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-Down>"
 nnoremap <nowait><expr> <C-Up> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-Up>"
 inoremap <nowait><expr> <C-Down> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<C-Down>"
