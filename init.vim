@@ -205,19 +205,17 @@ augroup vimrcEx
                 \   exe "normal g`\"" |
                 \ endif
 
-    " Set syntax highlighting for specific file types
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-
     " Enable spellchecking
     autocmd FileType markdown setlocal spell
-    autocmd BufRead,BufNewFile *.tex setlocal spell
+    autocmd FileType plaintex setlocal spell
     autocmd FileType gitcommit setlocal spell
     autocmd FileType changelog setlocal spell
 
     " Automatically wrap at 80 characters for text files
     autocmd FileType text setlocal textwidth=80
-    autocmd BufRead,BufNewFile *.md setlocal textwidth=80
-    autocmd BufRead,BufNewFile *.tex setlocal textwidth=80
+    autocmd FileType markdown setlocal textwidth=80
+    autocmd FileType plaintex setlocal textwidth=80
+    autocmd FileType gitcommit setlocal textwidth=80
 
     " Adjust quickfix window size
     autocmd FileType qf call AdjustWindowHeight(0, 7)
