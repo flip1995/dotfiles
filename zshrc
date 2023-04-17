@@ -67,7 +67,9 @@ command -v nvim >/dev/null 2>&1 && alias pvim='pipenv run nvim' || alias pvim='p
 alias gits='git status'
 ## Git commands
 git() {
-    if [[ $@ == "unwip" ]]; then
+    if [[ $@ == "wip" ]]; then
+        command git commit -a -m "WIP";
+    elif [[ $@ == "unwip" ]]; then
         if [[ $(git log -1 --pretty=oneline | sed 's/^[a-f0-9]*\s//') == "WIP" ]]; then
             command git reset HEAD~1
         else
@@ -75,6 +77,8 @@ git() {
         fi;
     elif [[ $@ == "push --fwl" ]]; then
         command git push --force-with-lease
+    elif [[ $@ == "corig" ]]; then
+        command git clean **/*.orig -f
     elif [[ $1 == "rad" ]]; then
         if [[ -n $2 ]]; then
             REPO=$(basename $(git config --get remote.origin.url))
