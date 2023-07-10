@@ -59,10 +59,7 @@ function! CheckBackSpace() abort
 endfunction
 
 " Insert <tab> when previous text is space, refresh completion if not.
-inoremap <silent><expr> <TAB>
-            \ coc#pum#visible() ? coc#pum#next(1):
-            \ CheckBackSpace() ? copilot#Accept("\<Tab>") :
-            \ coc#refresh()
+inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#next(1) : copilot#Accept("\<Tab>")
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Use <cr> to confirm completion
