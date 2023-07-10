@@ -1,2 +1,4 @@
 # neovim / coc.nvim
 .vim/
+# clangd
+compile_commands.json

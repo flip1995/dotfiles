@@ -1,20 +1,10 @@
 {
     "suggest.noselect": true,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "go",
-        "python",
-        "rust",
-        "json",
-        "cpp"
-    ],
+    "coc.preferences.formatOnSave": true,
     "rust-analyzer.updates.channel": "stable",
-    "rust-analyzer.checkOnSave.extraArgs": [
+    "rust-analyzer.check.extraArgs": [
         "--target-dir",
         "target/rust-analyzer"
-    ],
-    "rust-analyzer.diagnostics.disabled": [
-        "macro-error",
-        "unresolved-proc-macro"
     ],
     "rust-analyzer.cargo.features": "all",
     "rust-analyzer.rustc.source": "discover",
