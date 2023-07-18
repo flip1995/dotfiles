@@ -26,7 +26,7 @@ The scripts (`./install` and `./install_root`) will install the fonts automatica
 ### Vim
 
 #### Installing Plugins
-Plugins are listed in `vimrc.bundles`. After running one of the install scripts all plugins (inclusive `Vundle`) should be installed. 
+Plugins are listed in `vimrc.bundles`. After running one of the install scripts all plugins (inclusive `Vundle`) should be installed.
 
 To install them manually you'll need `Vundle`. You can get `Vundle` by cloning it into the `~/.vim/bundle` directory:
 ```
@@ -45,6 +45,17 @@ package manager. On Arch for example with:
 ```
 $ sudo pacman -S tmux
 ```
+
+---
+### Spotify
+In order to use the Spotify integration, make sure to install `spotifyd` and
+then log in with:
+
+```
+secret-tool store --label="spotify-keyring" application rust-keyring service spotifyd username <username>
+```
+
+Also run `make install` in `spotify-cli-linux`.
 
 ---
 ### Color schemes

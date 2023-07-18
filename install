@@ -24,6 +24,9 @@ ln -s -f "$HOME/dotfiles/Pipfile"               "$HOME/.config/nvim/Pipfile"
 ## git
 ln -s -f "$HOME/dotfiles/gitconfig"             "$HOME/.gitconfig"
 ln -s -f "$HOME/dotfiles/gitignore"             "$HOME/.gitignore"
+## spotify
+mkdir -p "$HOME/.config/spotifyd"
+ln -s -f "$HOME/dotfiles/spotifyd.conf"         "$HOME/.config/spotifyd/spotifyd.conf"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
