@@ -27,6 +27,8 @@ ln -s -f "$HOME/dotfiles/gitignore"             "$HOME/.gitignore"
 ## spotify
 mkdir -p "$HOME/.config/spotifyd"
 ln -s -f "$HOME/dotfiles/spotifyd.conf"         "$HOME/.config/spotifyd/spotifyd.conf"
+## gdb
+ln -s -f "$HOME/dotfiles/gdbinit"               "$HOME/.gdbinit"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
