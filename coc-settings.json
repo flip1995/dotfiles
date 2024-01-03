@@ -22,5 +22,9 @@
                 "~"
             ]
         }
-    }
+    },
+    "zig.zls.path": "/home/pkrones/.config/coc/extensions/coc-zls-data/zls_install/zls",
+    "zig.zls.warnStyle": true,
+    "zig.zls.enableInlayHints": true,
+    "zig.formattingProvider": "zls"
 }
