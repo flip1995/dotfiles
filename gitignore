@@ -2,3 +2,5 @@
 .vim/
 # clangd
 compile_commands.json
+# git spr
+.spr.yml
