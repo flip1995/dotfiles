@@ -4,7 +4,7 @@ command -v git >/dev/null 2>&1 || { echo "Make sure, that 'git' is installed. Ab
 
 # symlinks
 ## alacritty
-ln -s -f "$HOME/dotfiles/alacritty.yml"         "$HOME/.alacritty.yml"
+ln -s -f "$HOME/dotfiles/alacritty.toml"         "$HOME/.alacritty.toml"
 ## tmux
 ln -s -f "$HOME/dotfiles/tmux.conf"             "$HOME/.tmux.conf"
 git clone https://github.com/tmux-plugins/tpm   "$HOME/.tmux/plugins/tpm"
