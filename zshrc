@@ -126,7 +126,7 @@ command -v nvim >/dev/null 2>&1 && alias vim=nvim
 command -v fuck >/dev/null 2>&1 && eval $(thefuck --alias)
 alias rustdown='for tc in $(rustup toolchain list | grep "nightly-20*"); do rustup toolchain uninstall $tc; done'
 
-export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null 2>&1 && export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null 2>&1 && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 

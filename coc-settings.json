@@ -1,12 +1,11 @@
 {
     "suggest.noselect": true,
     "coc.preferences.formatOnSave": true,
-    "rust-analyzer.updates.channel": "stable",
     "rust-analyzer.check.extraArgs": [
         "--target-dir",
         "target/rust-analyzer"
     ],
-    "rust-analyzer.cargo.features": "all",
+    "rust-analyzer.check.features": "all",
     "rust-analyzer.rustc.source": "discover",
     "python.formatting.provider": "black",
     "languageserver": {
