@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [[ "$#" -le 1 ]]; then
+    git remote prune ${1:-origin}
+    git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs -I {} git branch -D {}
+else
+    (>&2 echo "usage: git gone [remote]")
+    exit 1
+fi

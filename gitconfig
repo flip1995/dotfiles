@@ -13,3 +13,7 @@
 [rerere]
 	enabled = true
 	autoupdate = true
+[alias]
+	corig = clean **/*.orig -f
+	wip = commit -a -m "WIP"
+	drop = "!f() { git reset --keep HEAD~${1:-1}; }; f"

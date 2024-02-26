@@ -65,36 +65,6 @@ command -v nvim >/dev/null 2>&1 && alias svim='sudo nvim' || alias svim='sudo vi
 command -v nvim >/dev/null 2>&1 && alias pvim='pipenv run nvim' || alias pvim='pipenv run vim'
 ## Git status
 alias gits='git status'
-## Git commands
-git() {
-    if [[ $@ == "wip" ]]; then
-        command git commit -a -m "WIP";
-    elif [[ $@ == "unwip" ]]; then
-        if [[ $(git log -1 --pretty=oneline | sed 's/^[a-f0-9]*\s//') == "WIP" ]]; then
-            command git reset HEAD~1
-        else
-            (>&2 echo "No WIP commit to unwip")
-        fi;
-    elif [[ $@ == "push --fwl" ]]; then
-        command git push --force-with-lease
-    elif [[ $@ == "corig" ]]; then
-        command git clean **/*.orig -f
-    elif [[ $1 == "rad" ]]; then
-        if [[ -n $2 ]]; then
-            REPO=$(basename $(git config --get remote.origin.url))
-            command git remote add $2 git@github.com:$2/$REPO --fetch
-        else
-            echo "usage: git rad <name>"
-        fi
-    elif [[ $1 == "gone" ]]; then
-        command git remote prune ${2:-origin}
-        command git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs -I {} git branch -D {}
-    elif [[ $1 == "drop" ]]; then
-        command git reset --keep HEAD~${2:-1}
-    else
-        command git "$@";
-    fi;
-}
 ## Tmux easy session attach
 command -v tmux >/dev/null 2>&1 && alias tmuxa='tmux attach -t'
 # watch a list of files/dirs and execute a command on change
