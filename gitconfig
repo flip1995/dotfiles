@@ -16,7 +16,7 @@
 [alias]
 	corig = clean **/*.orig -f
 	wip = commit -a -m "WIP"
-	pushfwl = push --force-with-lease
+	pushfwl = push --force-with-lease --force-if-includes
 	drop = "!f() { git reset --keep HEAD~${1:-1}; }; f"
 	resorig = "!f() { git reset --keep $(git rev-parse --abbrev-ref --symbolic-full-name @{u}); }; f"
 	gone = gone
