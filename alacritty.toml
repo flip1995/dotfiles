@@ -29,17 +29,20 @@ TERM = "screen-256color"
 size = 10
 
 [font.bold]
-family = "Source Code Pro"
+family = "SauceCodePro Nerd Font Mono"
+style = "Bold"
 
 [font.bold_italic]
-family = "Source Code Pro"
+family = "SauceCodePro Nerd Font Mono"
+style = "Bold Italic"
 
 [font.italic]
-family = "Source Code Pro"
+family = "SauceCodePro Nerd Font Mono"
 style = "Light Italic"
 
 [font.normal]
-family = "Source Code Pro"
+family = "SauceCodePro Nerd Font Mono"
+style = "Regular"
 
 [[hints.enabled]]
 command = "xdg-open"
