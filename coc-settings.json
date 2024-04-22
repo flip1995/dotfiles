@@ -7,7 +7,7 @@
     ],
     "rust-analyzer.check.features": "all",
     "rust-analyzer.rustc.source": "discover",
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "ruff",
     "languageserver": {
         "bash": {
             "command": "bash-language-server",
