@@ -6,3 +6,4 @@ export PATH="$PATH:$HOME/.local/zig"
 export PATH="$PATH:$HOME/dotfiles/scripts"
 export PATH="$PATH:/opt/cuda/bin"
 export GPG_TTY=$(tty)
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"

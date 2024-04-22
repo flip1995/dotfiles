@@ -29,6 +29,8 @@ mkdir -p "$HOME/.config/spotifyd"
 ln -s -f "$HOME/dotfiles/spotifyd.conf"         "$HOME/.config/spotifyd/spotifyd.conf"
 ## gdb
 ln -s -f "$HOME/dotfiles/gdbinit"               "$HOME/.gdbinit"
+## ripgrep
+ln -s -f "$HOME/dotfiles/ripgreprc"             "$HOME/.ripgreprc"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
