@@ -14,7 +14,7 @@
 	enabled = true
 	autoupdate = true
 [alias]
-	corig = clean **/*.orig -f
+	corig = clean **/*.orig *.orig -f
 	wip = commit -a -m "WIP"
 	pushfwl = push --force-with-lease --force-if-includes
 	drop = "!f() { git reset --keep HEAD~${1:-1}; }; f"
@@ -22,3 +22,8 @@
 	gone = gone
 	rad = rad
 	unwip = unwip
+[maintenance]
+	repo = /home/pkrones/rust-lang/rust-clippy
+	repo = /home/pkrones/rust-lang/rust
+[includeIf "gitdir:~/recogni/"]
+	path = ~/recogni/.gitconfig
