@@ -131,3 +131,5 @@ unfunction zkbd_file; unset keyfile ret
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
+
+command -v plz >/dev/null 2>&1 && source <(plz --completion_script)
