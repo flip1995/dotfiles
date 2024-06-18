@@ -15,11 +15,10 @@ ln -s -f "$HOME/dotfiles/zshenv"                "$HOME/.zshenv"
 ln -s -f "$HOME/dotfiles/zcomp"                 "$HOME/.zcomp"
 ## vim
 mkdir -p "$HOME/.config/nvim"
-ln -s -f "$HOME/dotfiles/init.vim"              "$HOME/.config/nvim/init.vim"
-ln -s -f "$HOME/dotfiles/plugins.vim"           "$HOME/.config/nvim/plugins.vim"
-ln -s -f "$HOME/dotfiles/coc-settings.json"     "$HOME/.config/nvim/coc-settings.json"
+ln -s -f "$HOME/dotfiles/init.lua"              "$HOME/.config/nvim/init.lua"
+ln -s -f "$HOME/dotfiles/lua"                   "$HOME/.config/nvim/"
+ln -s -f "$HOME/dotfiles/ftplugin"              "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/spell"                 "$HOME/.config/nvim/"
-ln -s -f "$HOME/dotfiles/init.vim"              "$HOME/.vimrc"
 ln -s -f "$HOME/dotfiles/Pipfile"               "$HOME/.config/nvim/Pipfile"
 ## git
 ln -s -f "$HOME/dotfiles/gitconfig"             "$HOME/.gitconfig"
@@ -33,14 +32,6 @@ ln -s -f "$HOME/dotfiles/gdbinit"               "$HOME/.gdbinit"
 ln -s -f "$HOME/dotfiles/ripgreprc"             "$HOME/.ripgreprc"
 
 echo "Symlinks successfully created for ~/dotfiles."
-
-# Install fonts
-if ! fc-list | grep -i "Source Code Pro.*.otf" >/dev/null; then
-    git clone https://github.com/powerline/fonts.git "$HOME/fonts"
-    sh "$HOME/fonts/install.sh"
-    echo "Set your terminal font to 'Source Code Pro'."
-    rm -rf "$HOME/fonts"
-fi
 
 if command -v pipenv &> /dev/null; then
     pushd "$HOME/.config/nvim" || exit 0

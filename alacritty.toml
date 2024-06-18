@@ -23,7 +23,7 @@ background = "0x002b36"
 foreground = "0x839496"
 
 [env]
-TERM = "screen-256color"
+TERM = "xterm-256color"
 
 [font]
 size = 10
