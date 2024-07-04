@@ -54,6 +54,21 @@ mason_lspconfig.setup_handlers({
         require('lspconfig')[server_name].setup({})
     end,
     ['clangd'] = function()
-        require('lspconfig').clangd.setup({ cmd = { 'clangd', '--background-index', '-j', '5', '--clang-tidy' } })
+        require('lspconfig').clangd.setup({ cmd = { 'clangd', '--background-index', '-j', '5', '--clang-tidy', '--rename-file-limit=0' } })
     end,
+    ['rust_analyzer'] = function()
+        require('lspconfig').rust_analyzer.setup({
+            settings = {
+                ["rust-analyzer"] = {
+                    check = {
+                        extraArgs = { "--target-dir", "target/rust-analyzer" },
+                        features = "all",
+                    },
+                    rustc = {
+                        source = "discover",
+                    },
+                }
+            }
+        })
+    end
 })
