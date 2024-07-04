@@ -12,7 +12,6 @@ git clone https://github.com/tmux-plugins/tpm   "$HOME/.tmux/plugins/tpm"
 ln -s -f "$HOME/dotfiles/zprofile"              "$HOME/.zprofile"
 ln -s -f "$HOME/dotfiles/zshrc"                 "$HOME/.zshrc"
 ln -s -f "$HOME/dotfiles/zshenv"                "$HOME/.zshenv"
-ln -s -f "$HOME/dotfiles/zcomp"                 "$HOME/.zcomp"
 ## vim
 mkdir -p "$HOME/.config/nvim"
 ln -s -f "$HOME/dotfiles/init.lua"              "$HOME/.config/nvim/init.lua"
@@ -41,6 +40,13 @@ else
     echo "WARNING: \`pipenv\` is not installed"
     echo "To get reliable python support in nvim run"
     echo "\`pipenv install\` in \`$HOME/.config/nvim\`"
+fi
+
+mkdir -p "$HOME/.zcomp"
+
+if command -v rustup &> /dev/null; then
+    rustup completions zsh > "$HOME/.zcomp/_rustup"
+    rustup completions zsh cargo > "$HOME/.zcomp/_cargo"
 fi
 
 exit 0
