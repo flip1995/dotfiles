@@ -47,6 +47,13 @@ require('lazy').setup({
     -- git
     'airblade/vim-gitgutter',
     -- style
-    "Tsuzat/NeoSolarized.nvim",
+    {
+        "Tsuzat/NeoSolarized.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd [[ colorscheme NeoSolarized ]]
+        end
+    },
     'nvim-lualine/lualine.nvim',
 })

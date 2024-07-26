@@ -2,13 +2,10 @@
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.numberwidth = 3
-local NeoSolarized = require('NeoSolarized')
 
-NeoSolarized.setup({
+require('NeoSolarized').setup({
     transparent = false,
 })
-
-vim.cmd('colorscheme NeoSolarized')
 
 -- Python
 vim.g.python3_host_prog = '/home/pkrones/.local/share/virtualenvs/dotfiles-*/bin/python'
