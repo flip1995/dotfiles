@@ -44,3 +44,5 @@ map('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
 map('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 map('n', '<leader>t', ':ClangdSwitchSourceHeader<CR>', opts)
+
+map('n', '<leader>i', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>', opts)
