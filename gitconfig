@@ -10,6 +10,8 @@
 	pushInsteadOf = https://github.com/
 [branch]
 	sort = -committerdate
+[rebase]
+	updateRefs = true
 [rerere]
 	enabled = true
 	autoupdate = true
@@ -27,3 +29,5 @@
 	repo = /home/pkrones/rust-lang/rust
 [includeIf "gitdir:~/recogni/"]
 	path = ~/recogni/.gitconfig
+[diff]
+	colorMoved = zebra
