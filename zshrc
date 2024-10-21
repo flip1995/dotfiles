@@ -100,6 +100,8 @@ command -v pyenv >/dev/null 2>&1 && export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null 2>&1 && export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 
+command -v luarocks >/dev/null 2>&1 && export PATH="$(luarocks config home_tree)/bin:$PATH"
+
 autoload zkbd
 function zkbd_file() {
     [[ -f ~/.zkbd/${TERM}-${VENDOR}-${OSTYPE} ]] && printf '%s' ~/".zkbd/${TERM}-${VENDOR}-${OSTYPE}" && return 0

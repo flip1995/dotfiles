@@ -49,4 +49,8 @@ if command -v rustup &> /dev/null; then
     rustup completions zsh cargo > "$HOME/.zcomp/_cargo"
 fi
 
+if command -v luarocks &> /dev/null; then
+    luarocks completion zsh > "$HOME/.zcomp/_luarocks"
+fi
+
 exit 0
