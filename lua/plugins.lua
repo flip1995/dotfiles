@@ -34,6 +34,7 @@ require('lazy').setup({
         'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
+    'stevearc/conform.nvim',
     -- Completion
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',

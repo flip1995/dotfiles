@@ -48,7 +48,18 @@ require('mason').setup({
     ui = { icons = { package_installed = "", package_pending = "", package_uninstalled = "" } }
 })
 local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup()
+
+mason_lspconfig.setup({
+    ensure_installed = {
+        "clangd@18.1.3",
+        "lua_ls",
+        "ruff@0.5.7",
+        "pyright",
+        "rust_analyzer",
+    },
+    automatic_installation = true,
+})
+
 mason_lspconfig.setup_handlers({
     function(server_name)
         require('lspconfig')[server_name].setup({})
@@ -67,8 +78,59 @@ mason_lspconfig.setup_handlers({
                     rustc = {
                         source = "discover",
                     },
-                }
-            }
-        })
-    end
-})
+                },
+            },
+        }
+    end,
+    ["ruff"] = function()
+        require("lspconfig").ruff.setup {
+            init_options = {
+                settings = {
+                    configurationPreference = "filesystemFirst",
+                },
+            },
+        }
+    end,
+    ["pyright"] = function()
+        require("lspconfig").pyright.setup {
+            settings = {
+                pyright = {
+                    -- Using Ruff's import organizer
+                    disableOrganizeImports = true,
+                },
+                python = {
+                    analysis = {
+                        -- Ignore all files for analysis to exclusively use Ruff for linting
+                        ignore = { "*" },
+                    },
+                },
+            },
+        }
+    end,
+    ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup {
+            settings = {
+                Lua = {
+                    format = {
+                        enable = false,
+                    },
+                    runtime = {
+                        version = "Lua 5.4",
+                    },
+                },
+            },
+        }
+    end,
+}
+
+local conform = require("conform")
+
+conform.setup {
+    formatters_by_ft = {
+        lua = { "stylua" },
+    },
+    format_on_save = {
+        lsp_fallback = true,
+        timeout_ms = 1000,
+    },
+}
