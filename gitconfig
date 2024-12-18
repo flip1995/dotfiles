@@ -21,6 +21,8 @@
 	pushfwl = push --force-with-lease --force-if-includes
 	drop = "!f() { git reset --keep HEAD~${1:-1}; }; f"
 	resorig = "!f() { git reset --keep $(git rev-parse --abbrev-ref --symbolic-full-name @{u}); }; f"
+	canpf = "!f() { git commit --amend --no-edit && git pushfwl; }; f"
+	cpsha = "!f() { git log -1 --format=%H | xclip -selection c; }; f"
 	gone = gone
 	rad = rad
 	unwip = unwip
