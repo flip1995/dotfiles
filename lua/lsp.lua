@@ -1,18 +1,18 @@
-local cmp = require('cmp')
-local luasnip = require('luasnip')
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
-cmp.setup({
+cmp.setup {
     snippet = {
         expand = function(args)
             luasnip.lsp_expand(args.body)
         end,
     },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-Up>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-Down>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    mapping = cmp.mapping.preset.insert {
+        ["<C-Up>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-Down>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm { select = true },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -31,25 +31,31 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
-    }),
+    },
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
     }, {
-        { name = 'buffer' },
-    })
-})
+        { name = "buffer" },
+    }),
+}
 
-require('neodev').setup()
+require("neodev").setup()
 
 vim.lsp.inlay_hint.enable(true)
 
-require('mason').setup({
-    ui = { icons = { package_installed = "", package_pending = "", package_uninstalled = "" } }
-})
-local mason_lspconfig = require('mason-lspconfig')
+require("mason").setup {
+    ui = {
+        icons = {
+            package_installed = "",
+            package_pending = "",
+            package_uninstalled = "",
+        },
+    },
+}
 
-mason_lspconfig.setup({
+local mason_lspconfig = require("mason-lspconfig")
+mason_lspconfig.setup {
     ensure_installed = {
         "clangd@18.1.3",
         "lua_ls",
@@ -58,17 +64,19 @@ mason_lspconfig.setup({
         "rust_analyzer",
     },
     automatic_installation = true,
-})
+}
 
-mason_lspconfig.setup_handlers({
+mason_lspconfig.setup_handlers {
     function(server_name)
-        require('lspconfig')[server_name].setup({})
+        require("lspconfig")[server_name].setup {}
     end,
-    ['clangd'] = function()
-        require('lspconfig').clangd.setup({ cmd = { 'clangd', '--background-index', '-j', '5', '--clang-tidy', '--rename-file-limit=0' } })
+    ["clangd"] = function()
+        require("lspconfig").clangd.setup {
+            cmd = { "clangd", "--background-index", "-j", "5", "--clang-tidy", "--rename-file-limit=0" },
+        }
     end,
-    ['rust_analyzer'] = function()
-        require('lspconfig').rust_analyzer.setup({
+    ["rust_analyzer"] = function()
+        require("lspconfig").rust_analyzer.setup {
             settings = {
                 ["rust-analyzer"] = {
                     check = {
