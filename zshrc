@@ -130,7 +130,7 @@ unfunction zkbd_file; unset keyfile ret
 [[ -n "$key[Backspace]" ]] && bindkey "$key[Backspace]" backward-delete-char
 [[ -n "$key[Delete]" ]] && bindkey "$key[Delete]" delete-char
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 

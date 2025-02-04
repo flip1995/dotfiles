@@ -22,8 +22,8 @@ require("lazy").setup {
     "tpope/vim-surround",
     "jiangmiao/auto-pairs",
     "tomtom/tcomment_vim",
-    -- fxf
-    { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" },
+    -- fzf
+    "junegunn/fzf",
     "junegunn/fzf.vim",
     -- LSP
     "williamboman/mason.nvim",
