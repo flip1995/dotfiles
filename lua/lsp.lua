@@ -117,13 +117,17 @@ mason_lspconfig.setup_handlers {
     end,
     ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup {
+            on_init = function(client)
+                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+                    runtime = {
+                        version = "Lua 5.4",
+                    },
+                })
+            end,
             settings = {
                 Lua = {
                     format = {
                         enable = false,
-                    },
-                    runtime = {
-                        version = "Lua 5.4",
                     },
                 },
             },
