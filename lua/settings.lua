@@ -69,6 +69,7 @@ vim.o.splitright = true
 vim.o.foldmethod = "marker"
 
 vim.o.hidden = true
+vim.o.undofile = true
 
 vim.o.ignorecase = true
 vim.o.smartcase = true
