@@ -24,7 +24,7 @@
 	drop = "!f() { git reset --keep HEAD~${1:-1}; }; f"
 	resorig = "!f() { git reset --keep $(git rev-parse --abbrev-ref --symbolic-full-name @{u}); }; f"
 	canpf = "!f() { git commit --amend --no-edit && git pushfwl; }; f"
-	cpsha = "!f() { git log -1 --format=%H HEAD~${1:-0} | wl-copy; }; f"
+	cpsha = "!f() { git log -1 --format=%H HEAD~${1:-0} | clip.exe; }; f"
 	ghc = "!f() { mkdir -p ${1} && git clone git@github.com:${1} ${1}; }; f"
 	gone = gone
 	rad = rad

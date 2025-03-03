@@ -45,7 +45,7 @@ family = "SauceCodePro Nerd Font Mono"
 style = "Medium"
 
 [[hints.enabled]]
-command = "xdg-open"
+command = "explorer.exe"
 hyperlinks = true
 post_processing = true
 regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
@@ -57,3 +57,6 @@ mods = "Shift"
 [window]
 decorations = "none"
 decorations_theme_variant = "Dark"
+
+[shell]
+program = "wsl"

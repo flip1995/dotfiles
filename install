@@ -4,7 +4,7 @@ command -v git >/dev/null 2>&1 || { echo "Make sure, that 'git' is installed. Ab
 
 # symlinks
 ## alacritty
-ln -s -f "$HOME/dotfiles/alacritty.toml"         "$HOME/.alacritty.toml"
+ln -s -f "/mnt/c/Users/info/AppData/Roaming/alacritty/alacritty.toml" "$HOME/.alacritty.toml"
 ## tmux
 ln -s -f "$HOME/dotfiles/tmux.conf"             "$HOME/.tmux.conf"
 git clone https://github.com/tmux-plugins/tpm   "$HOME/.tmux/plugins/tpm"
@@ -32,6 +32,9 @@ ln -s -f "$HOME/dotfiles/spotifyd.conf"         "$HOME/.config/spotifyd/spotifyd
 ln -s -f "$HOME/dotfiles/gdbinit"               "$HOME/.gdbinit"
 ## ripgrep
 ln -s -f "$HOME/dotfiles/ripgreprc"             "$HOME/.ripgreprc"
+## xdg-open<->explorer.exe
+mkdir -p "$HOME/.local/bin"
+ln -s -f "/mnt/c/Windows/explorer.exe"          "$HOME/.local/bin/xdg-open"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
