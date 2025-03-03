@@ -1,4 +1,4 @@
-require("lazy").setup {
+require("lazy").setup({
     -- tmux integration
     {
         "christoomey/vim-tmux-navigator",
@@ -26,10 +26,19 @@ require("lazy").setup {
     "junegunn/fzf",
     "junegunn/fzf.vim",
     -- LSP
+    "folke/neoconf.nvim",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "folke/neodev.nvim",
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            enabled = function(root_dir)
+                return root_dir == vim.fn.expand("~/dotfiles") or root_dir == vim.fn.expand("~/.config/nvim")
+            end,
+        },
+    },
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -57,4 +66,4 @@ require("lazy").setup {
         end,
     },
     "nvim-lualine/lualine.nvim",
-}
+}, {})

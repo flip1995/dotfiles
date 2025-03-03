@@ -1,5 +1,5 @@
-# neovim / coc.nvim
-.vim/
+# neovim local config
+.neoconf.json
 # clangd
 compile_commands.json
 # git spr

@@ -15,6 +15,7 @@ ln -s -f "$HOME/dotfiles/zshenv"                "$HOME/.zshenv"
 ## vim
 mkdir -p "$HOME/.config/nvim"
 ln -s -f "$HOME/dotfiles/init.lua"              "$HOME/.config/nvim/init.lua"
+ln -s -f "$HOME/dotfiles/neoconf.json"          "$HOME/.config/nvim/neoconf.json"
 ln -s -f "$HOME/dotfiles/lua"                   "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/ftplugin"              "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/spell"                 "$HOME/.config/nvim/"

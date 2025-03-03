@@ -40,7 +40,8 @@ cmp.setup {
     }),
 }
 
-require("neodev").setup()
+require("lazydev").setup()
+require("neoconf").setup()
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -62,32 +63,16 @@ mason_lspconfig.setup {
         "ruff@0.5.7",
         "pyright",
         "rust_analyzer",
+        "jsonls",
     },
     automatic_installation = true,
 }
 
+local caps = require("cmp_nvim_lsp").default_capabilities()
 mason_lspconfig.setup_handlers {
     function(server_name)
-        require("lspconfig")[server_name].setup {}
-    end,
-    ["clangd"] = function()
-        require("lspconfig").clangd.setup {
-            cmd = { "clangd", "--background-index", "-j", "5", "--clang-tidy", "--rename-file-limit=0" },
-        }
-    end,
-    ["rust_analyzer"] = function()
-        require("lspconfig").rust_analyzer.setup {
-            settings = {
-                ["rust-analyzer"] = {
-                    check = {
-                        extraArgs = { "--target-dir", "target/rust-analyzer" },
-                        features = "all",
-                    },
-                    rustc = {
-                        source = "discover",
-                    },
-                },
-            },
+        require("lspconfig")[server_name].setup {
+            capabilities = caps,
         }
     end,
     ["ruff"] = function()
@@ -95,22 +80,6 @@ mason_lspconfig.setup_handlers {
             init_options = {
                 settings = {
                     configurationPreference = "filesystemFirst",
-                },
-            },
-        }
-    end,
-    ["pyright"] = function()
-        require("lspconfig").pyright.setup {
-            settings = {
-                pyright = {
-                    -- Using Ruff's import organizer
-                    disableOrganizeImports = true,
-                },
-                python = {
-                    analysis = {
-                        -- Ignore all files for analysis to exclusively use Ruff for linting
-                        ignore = { "*" },
-                    },
                 },
             },
         }
@@ -124,13 +93,6 @@ mason_lspconfig.setup_handlers {
                     },
                 })
             end,
-            settings = {
-                Lua = {
-                    format = {
-                        enable = false,
-                    },
-                },
-            },
         }
     end,
 }

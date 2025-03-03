@@ -1,0 +1,33 @@
+{
+    "lspconfig": {
+        "lua_ls": {
+            "Lua.runtime.version": "Lua 5.4",
+            "Lua.format.enable": false
+        },
+        "pyright": {
+            // Using Ruff's import organizer
+            "pyright.disableOranizeImports": true,
+            // Ignore all files for analysis to exclusively use Ruff for linting
+            "python.analysis.ignore": [
+                "*"
+            ]
+        },
+        "rust_analyzer": {
+            "rust-analyzer.check.extraArgs": [
+                "--target-dir",
+                "target/rust-analyzer"
+            ],
+            "rust-analyzer.check.features": "all",
+            "rust-analyzer.rustc.source": "discover"
+        },
+        "clangd": {
+            "clangd.arguments": [
+                "--background-index",
+                "-j",
+                "5",
+                "--clang-tidy",
+                "--rename-file-limit=0"
+            ]
+        }
+    }
+}
