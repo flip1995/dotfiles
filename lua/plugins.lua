@@ -35,7 +35,7 @@ require("lazy").setup({
         ft = "lua",
         opts = {
             enabled = function(root_dir)
-                return root_dir == vim.fn.expand("~/dotfiles") or root_dir == vim.fn.expand("~/.config/nvim")
+                return root_dir:find("nvim") or root_dir:find("dotfiles")
             end,
         },
     },
