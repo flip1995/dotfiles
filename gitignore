@@ -4,3 +4,5 @@
 compile_commands.json
 # git spr
 .spr.yml
+# lua scripts
+inspect.lua
