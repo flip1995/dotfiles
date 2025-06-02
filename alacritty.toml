@@ -42,7 +42,7 @@ style = "Light Italic"
 
 [font.normal]
 family = "SauceCodePro Nerd Font Mono"
-style = "Regular"
+style = "Medium"
 
 [[hints.enabled]]
 command = "xdg-open"
