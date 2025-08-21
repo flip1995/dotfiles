@@ -27,8 +27,8 @@ require("lazy").setup({
     "junegunn/fzf.vim",
     -- LSP
     "folke/neoconf.nvim",
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     {
         "folke/lazydev.nvim",

@@ -65,36 +65,30 @@ mason_lspconfig.setup {
         "rust_analyzer",
         "jsonls",
     },
-    automatic_installation = true,
 }
 
-local caps = require("cmp_nvim_lsp").default_capabilities()
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require("lspconfig")[server_name].setup {
-            capabilities = caps,
-        }
-    end,
-    ["ruff"] = function()
-        require("lspconfig").ruff.setup {
-            init_options = {
-                settings = {
-                    configurationPreference = "filesystemFirst",
-                },
+vim.lsp.config("*", {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
+vim.lsp.config.ruff = {
+    init_options = {
+        settings = {
+            configurationPreference = "filesystemFirst",
+        },
+    },
+}
+vim.lsp.config.lua_ls = {
+    on_init = function(client)
+        ---@diagnostic disable-next-line: param-type-mismatch settings.Lua's actual type is unknown to the LSP
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+            runtime = {
+                version = "Lua 5.4",
             },
-        }
+        })
     end,
-    ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup {
-            on_init = function(client)
-                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-                    runtime = {
-                        version = "Lua 5.4",
-                    },
-                })
-            end,
-        }
-    end,
+}
+vim.lsp.config.clangd = {
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 
 local conform = require("conform")
