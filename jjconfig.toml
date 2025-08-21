@@ -1,0 +1,16 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+[user]
+name = "Philipp Krones"
+email = "hello@philkrones.com"
+
+[ui]
+merge-editor = "meld"
+default-command = "log"
+
+[snapshot]
+auto-track = "none()"
+
+[[--scope]]
+--when.repositories = ["~/recogni"]
+[--scope.user]
+email = "philipp@recogni.com"

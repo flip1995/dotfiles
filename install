@@ -23,6 +23,8 @@ ln -s -f "$HOME/dotfiles/pyproject.toml"        "$HOME/.config/nvim/pyproject.to
 ## git
 ln -s -f "$HOME/dotfiles/gitconfig"             "$HOME/.gitconfig"
 ln -s -f "$HOME/dotfiles/gitignore"             "$HOME/.gitignore"
+## jj
+ln -s -f "$HOME/dotfiles/jjconfig.toml"         "$HOME/.jjconfig.toml"
 ## spotify
 mkdir -p "$HOME/.config/spotifyd"
 ln -s -f "$HOME/dotfiles/spotifyd.conf"         "$HOME/.config/spotifyd/spotifyd.conf"

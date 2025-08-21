@@ -133,3 +133,5 @@ command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 
 command -v plz >/dev/null 2>&1 && source <(plz --completion_script)
+
+command -v jj >/dev/null 2>&1 && source <(COMPLETE=zsh jj)
