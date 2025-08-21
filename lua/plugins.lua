@@ -52,6 +52,11 @@ require("lazy").setup({
     "hrsh7th/nvim-cmp",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    -- Debugger
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio", "stevearc/overseer.nvim" },
+    },
     -- Copilot
     "github/copilot.vim",
     -- git

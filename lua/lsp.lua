@@ -40,7 +40,9 @@ cmp.setup {
     }),
 }
 
-require("lazydev").setup()
+require("lazydev").setup {
+    library = { "nvim-dap-ui" },
+}
 require("neoconf").setup()
 
 vim.lsp.inlay_hint.enable(true)
