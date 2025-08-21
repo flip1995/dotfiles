@@ -77,16 +77,6 @@ vim.lsp.config.ruff = {
         },
     },
 }
-vim.lsp.config.lua_ls = {
-    on_init = function(client)
-        ---@diagnostic disable-next-line: param-type-mismatch settings.Lua's actual type is unknown to the LSP
-        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-            runtime = {
-                version = "Lua 5.4",
-            },
-        })
-    end,
-}
 vim.lsp.config.clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
