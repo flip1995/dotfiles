@@ -47,7 +47,7 @@ map("n", "gt", ":lua require'telescope.builtin'.lsp_type_definitions{}<CR>")
 map("n", "gr", ":lua require'telescope.builtin'.lsp_references{}<CR>")
 
 map("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
 map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 map("n", "<leader>t", ":ClangdSwitchSourceHeader<CR>")
