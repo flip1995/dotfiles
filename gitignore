@@ -2,6 +2,7 @@
 .neoconf.json
 # clangd
 compile_commands.json
+compile_commands.events.json
 # git spr
 .spr.yml
 # lua scripts
