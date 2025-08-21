@@ -19,7 +19,7 @@ ln -s -f "$HOME/dotfiles/neoconf.json"          "$HOME/.config/nvim/neoconf.json
 ln -s -f "$HOME/dotfiles/lua"                   "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/ftplugin"              "$HOME/.config/nvim/"
 ln -s -f "$HOME/dotfiles/spell"                 "$HOME/.config/nvim/"
-ln -s -f "$HOME/dotfiles/Pipfile"               "$HOME/.config/nvim/Pipfile"
+ln -s -f "$HOME/dotfiles/pyproject.toml"        "$HOME/.config/nvim/pyproject.toml"
 ## git
 ln -s -f "$HOME/dotfiles/gitconfig"             "$HOME/.gitconfig"
 ln -s -f "$HOME/dotfiles/gitignore"             "$HOME/.gitignore"
@@ -33,14 +33,14 @@ ln -s -f "$HOME/dotfiles/ripgreprc"             "$HOME/.ripgreprc"
 
 echo "Symlinks successfully created for ~/dotfiles."
 
-if command -v pipenv &> /dev/null; then
+if command -v uv &> /dev/null; then
     pushd "$HOME/.config/nvim" || exit 0
-    pipenv install
+    uv sync
     popd || exit 0
 else
-    echo "WARNING: \`pipenv\` is not installed"
+    echo "WARNING: \`uv\` is not installed"
     echo "To get reliable python support in nvim run"
-    echo "\`pipenv install\` in \`$HOME/.config/nvim\`"
+    echo "\`uv sync\` in \`$HOME/.config/nvim\`"
 fi
 
 mkdir -p "$HOME/.zcomp"

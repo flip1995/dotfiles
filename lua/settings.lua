@@ -8,7 +8,7 @@ require("NeoSolarized").setup {
 }
 
 -- Python
-vim.g.python3_host_prog = "/home/pkrones/.local/share/virtualenvs/dotfiles-*/bin/python"
+vim.g.python3_host_prog = vim.fn.stdpath("config") .. "/.venv/bin/python"
 
 local function nvim_tree_attach(bufnr)
     local api = require("nvim-tree.api")
