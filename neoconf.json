@@ -6,7 +6,7 @@
         },
         "pyright": {
             // Using Ruff's import organizer
-            "pyright.disableOranizeImports": true,
+            "pyright.disableOrganizeImports": true,
             // Ignore all files for analysis to exclusively use Ruff for linting
             "python.analysis.ignore": [
                 "*"

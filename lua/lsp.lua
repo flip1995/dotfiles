@@ -60,9 +60,9 @@ require("mason").setup {
 local mason_lspconfig = require("mason-lspconfig")
 mason_lspconfig.setup {
     ensure_installed = {
-        "clangd@18.1.3",
+        "clangd",
         "lua_ls",
-        "ruff@0.5.7",
+        "ruff",
         "pyright",
         "rust_analyzer",
         "jsonls",
@@ -79,8 +79,54 @@ vim.lsp.config.ruff = {
         },
     },
 }
+vim.lsp.config.rust_analyzer = {
+    settings = {
+        ["rust-analyzer"] = {
+            check = {
+                extraArgs = { "--target-dir", "target/rust-analyzer" },
+                features = "all",
+            },
+            rustc = {
+                source = "discover",
+            },
+        },
+    },
+}
 vim.lsp.config.clangd = {
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    settings = {
+        clangd = {
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+            arguments = {
+                "--background-index",
+                "-j",
+                "5",
+                "--clang-tidy",
+                "--rename-file-limit=0",
+            },
+        },
+    },
+}
+vim.lsp.config.pyright = {
+    settings = {
+        pyright = {
+            disableOrganizeImports = true,
+            analysis = {
+                ignore = { "*" },
+            },
+        },
+    },
+}
+vim.lsp.config.lua_ls = {
+    settings = {
+        Lua = {
+            runtime = {
+                version = "Lua 5.4",
+            },
+            format = {
+                enable = false,
+            },
+        },
+    },
 }
 
 local conform = require("conform")

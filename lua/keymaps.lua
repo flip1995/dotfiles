@@ -50,6 +50,6 @@ map("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>")
 map("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>")
 
 map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-map("n", "<leader>t", ":ClangdSwitchSourceHeader<CR>")
+map("n", "<leader>t", ":LspClangdSwitchSourceHeader<CR>")
 
 map("n", "<leader>i", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
