@@ -1,6 +1,12 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+vim.diagnostic.config {
+    severity_sort = true,
+    virtual_text = { prefix = "●" },
+    jump = { float = true },
+}
+
 cmp.setup {
     snippet = {
         expand = function(args)

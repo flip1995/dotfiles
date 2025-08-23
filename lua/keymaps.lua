@@ -1,6 +1,7 @@
 local function map(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
+local builtin = require("telescope.builtin")
 
 vim.g.mapleader = ","
 
@@ -14,11 +15,11 @@ map("", "<leader>y", '"+y')
 map("n", "<F8>", ":NvimTreeToggle<CR>")
 map("n", "<F9>", ":NvimTreeFindFile<CR>")
 
--- fzf
-map("n", "<leader>b", ":Buffer<CR>")
-map("n", "<leader>h", ":History<CR>")
-map("n", "<leader>r", ":Rg<CR>")
-map("n", "<leader>f", ":exe ':Rg' expand('<cword>')<CR>")
+-- telescope
+map("n", "<leader>b", builtin.buffers)
+map("n", "<leader>h", builtin.oldfiles)
+map("n", "<leader>r", builtin.live_grep)
+map("n", "<leader>f", builtin.grep_string)
 
 -- Save/Close
 map("n", "<leader>q", ":q<CR>")
@@ -35,21 +36,31 @@ map("n", "<C-down>", [[<cmd>horizontal resize +2<cr>]])
 map("n", "<C-up>", [[<cmd>horizontal resize -2<cr>]])
 
 -- LSP
-map("n", "gpd", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-map("n", "gnd", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-map("n", "gpe", "<cmd>lua vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })<CR>")
-map("n", "gne", "<cmd>lua vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })<CR>")
+map("n", "gpd", function()
+    vim.diagnostic.jump { count = -1 }
+end)
+map("n", "gnd", function()
+    vim.diagnostic.jump { count = 1 }
+end)
+map("n", "gpe", function()
+    vim.diagnostic.jump { count = -1, severity = vim.diagnostic.severity.ERROR }
+end)
+map("n", "gne", function()
+    vim.diagnostic.jump { count = 1, severity = vim.diagnostic.severity.ERROR }
+end)
 
-map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-map("n", "gd", ":lua require'telescope.builtin'.lsp_definitions{}<CR>")
-map("n", "gi", ":lua require'telescope.builtin'.lsp_implementations{}<CR>")
-map("n", "gt", ":lua require'telescope.builtin'.lsp_type_definitions{}<CR>")
-map("n", "gr", ":lua require'telescope.builtin'.lsp_references{}<CR>")
+map("n", "gD", vim.lsp.buf.declaration)
+map("n", "gd", builtin.lsp_definitions)
+map("n", "gi", builtin.lsp_implementations)
+map("n", "gt", builtin.lsp_type_definitions)
+map("n", "gr", builtin.lsp_references)
 
-map("n", "H", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "gR", "<cmd>lua vim.lsp.buf.rename()<CR>")
+map("n", "H", vim.lsp.buf.hover)
+map("n", "gR", vim.lsp.buf.rename)
 
-map("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+map("n", "<leader>a", vim.lsp.buf.code_action)
 map("n", "<leader>t", ":LspClangdSwitchSourceHeader<CR>")
 
-map("n", "<leader>i", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>")
+map("n", "<leader>i", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end)

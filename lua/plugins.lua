@@ -22,9 +22,6 @@ require("lazy").setup({
     "tpope/vim-surround",
     "jiangmiao/auto-pairs",
     "tomtom/tcomment_vim",
-    -- fzf
-    "junegunn/fzf",
-    "junegunn/fzf.vim",
     -- LSP
     "folke/neoconf.nvim",
     "mason-org/mason.nvim",
@@ -40,8 +37,17 @@ require("lazy").setup({
         },
     },
     {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        branch = "main",
+        build = ":TSUpdate",
+    },
+    {
         "nvim-telescope/telescope.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-fzf-native.nvim",
+        },
     },
     "stevearc/conform.nvim",
     -- Completion
