@@ -13,4 +13,4 @@ auto-track = "none()"
 [[--scope]]
 --when.repositories = ["~/recogni"]
 [--scope.user]
-email = "philipp@recogni.com"
+email = "philipp.krones@tensordyne.ai"
