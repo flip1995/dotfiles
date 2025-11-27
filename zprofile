@@ -7,3 +7,4 @@ export PATH="$PATH:$HOME/dotfiles/scripts"
 export PATH="$PATH:/opt/cuda/bin"
 export GPG_TTY=$(tty)
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
