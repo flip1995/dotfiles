@@ -1,2 +1,2 @@
 vim.o.spell = true
-vim.o.textwidth = 80
+vim.o.textwidth = 100
