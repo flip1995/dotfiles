@@ -16,6 +16,7 @@ map("n", "<F8>", ":NvimTreeToggle<CR>")
 map("n", "<F9>", ":NvimTreeFindFile<CR>")
 
 -- telescope
+map("n", "<leader>l", builtin.find_files)
 map("n", "<leader>b", builtin.buffers)
 map("n", "<leader>h", builtin.oldfiles)
 map("n", "<leader>r", builtin.live_grep)

@@ -62,6 +62,10 @@ require("lualine").setup {
     },
 }
 
+-- telescope
+require("telescope").setup {}
+require("telescope").load_extension("fzf")
+
 -- Usability
 vim.o.splitbelow = true
 vim.o.splitright = true
