@@ -3,6 +3,14 @@
 name = "Philipp Krones"
 email = "hello@philkrones.com"
 
+[signing]
+behavior = "own"
+backend = "gpg"
+key = "1CA0DF2AF59D68A5"
+
+[git]
+sign-on-push = true
+
 [ui]
 merge-editor = "meld"
 default-command = "log"
