@@ -18,6 +18,9 @@ default-command = "log"
 [snapshot]
 auto-track = "none()"
 
+[remotes.origin]
+auto-track-created-bookmarks = "*"
+
 [[--scope]]
 --when.repositories = ["~/recogni"]
 [--scope.user]
