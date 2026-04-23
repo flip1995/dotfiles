@@ -128,21 +128,6 @@ vim.lsp.config.lua_ls = {
             runtime = {
                 version = "Lua 5.4",
             },
-            format = {
-                enable = false,
-            },
         },
-    },
-}
-
-local conform = require("conform")
-
-conform.setup {
-    formatters_by_ft = {
-        lua = { "stylua" },
-    },
-    format_on_save = {
-        lsp_fallback = true,
-        timeout_ms = 1000,
     },
 }

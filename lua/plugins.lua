@@ -49,7 +49,6 @@ require("lazy").setup({
         },
     },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "stevearc/conform.nvim",
     -- Completion
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
