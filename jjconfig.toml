@@ -21,6 +21,11 @@ auto-track = "none()"
 [remotes.origin]
 auto-track-created-bookmarks = "*"
 
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
+tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+untug = ["bookmark", "move", "--from", "heads(@+:: & bookmarks())", "--to", "@", "--allow-backwards"]
+
 [[--scope]]
 --when.repositories = ["~/recogni"]
 [--scope.user]
