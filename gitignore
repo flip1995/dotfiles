@@ -7,3 +7,5 @@ compile_commands.events.json
 .spr.yml
 # lua scripts
 inspect.lua
+# claude local settings
+**/.claude/settings.local.json
