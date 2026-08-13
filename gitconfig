@@ -8,6 +8,7 @@
 	autoSetupRemote = true
 [core]
 	excludesfile = ~/.gitignore
+	pager = delta
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
 [branch]
@@ -36,3 +37,24 @@
 	path = ~/recogni/.gitconfig
 [diff]
 	colorMoved = zebra
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	features = jjlike
+[delta "jjlike"]
+	line-numbers = true
+	line-numbers-left-format = "{nm:>4}"
+	line-numbers-right-format = " {np:>4}: "
+	line-numbers-zero-style = dim
+	file-style = yellow
+	file-decoration-style = none
+	file-modified-label = "Modified regular file"
+	file-added-label = "Added regular file"
+	file-removed-label = "Removed regular file"
+	file-renamed-label = "Renamed regular file"
+	hunk-header-style = line-number
+	hunk-header-decoration-style = none
+	hunk-label = "..."
+[merge]
+	conflictstyle = diff3

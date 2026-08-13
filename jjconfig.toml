@@ -14,6 +14,8 @@ sign-on-push = true
 [ui]
 merge-editor = "meld"
 default-command = "log"
+diff-formatter = ":git"
+pager = "delta"
 
 [snapshot]
 auto-track = "none()"
