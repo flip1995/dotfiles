@@ -128,7 +128,21 @@ unfunction zkbd_file; unset keyfile ret
 [[ -n "$key[Backspace]" ]] && bindkey "$key[Backspace]" backward-delete-char
 [[ -n "$key[Delete]" ]] && bindkey "$key[Delete]" delete-char
 
-command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+if command -v fzf >/dev/null 2>&1; then
+    source <(fzf --zsh)
+
+    # fzf's built-in walker ignores .gitignore. `fd` honours .gitignore/.ignore, so route every
+    # file/directory picker through it to keep ignored paths out.
+    if command -v fd >/dev/null 2>&1; then
+        export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --strip-cwd-prefix'
+        export FZF_CTRL_T_COMMAND='fd --hidden --exclude .git --strip-cwd-prefix'
+        export FZF_ALT_C_COMMAND='fd --type d --hidden --exclude .git --strip-cwd-prefix'
+
+        # `**<TAB>` completion uses its own generators rather than the variables above.
+        _fzf_compgen_path() { fd --hidden --exclude .git . "$1" }
+        _fzf_compgen_dir() { fd --type d --hidden --exclude .git . "$1" }
+    fi
+fi
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 
