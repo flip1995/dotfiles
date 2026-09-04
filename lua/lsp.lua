@@ -49,7 +49,6 @@ cmp.setup {
 require("lazydev").setup {
     library = { "nvim-dap-ui" },
 }
-require("neoconf").setup()
 
 vim.lsp.inlay_hint.enable(true)
 
@@ -77,6 +76,9 @@ mason_lspconfig.setup {
 
 vim.lsp.config("*", {
     capabilities = require("cmp_nvim_lsp").default_capabilities(),
+    before_init = function(_, config)
+        require("codesettings").with_local_settings(config.name, config)
+    end,
 })
 vim.lsp.config.ruff = {
     init_options = {
@@ -99,23 +101,23 @@ vim.lsp.config.rust_analyzer = {
     },
 }
 vim.lsp.config.clangd = {
-    settings = {
-        clangd = {
-            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-            arguments = {
-                "--background-index",
-                "-j",
-                "5",
-                "--clang-tidy",
-                "--rename-file-limit=0",
-            },
-        },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "-j=5",
+        "--clang-tidy",
+        "--rename-file-limit=0",
     },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 vim.lsp.config.pyright = {
     settings = {
         pyright = {
+            -- Using Ruff's import organizer
             disableOrganizeImports = true,
+        },
+        python = {
+            -- Ignore all files for analysis to exclusively use Ruff for linting
             analysis = {
                 ignore = { "*" },
             },

@@ -23,7 +23,14 @@ require("lazy").setup({
     "jiangmiao/auto-pairs",
     "tomtom/tcomment_vim",
     -- LSP
-    "folke/neoconf.nvim",
+    {
+        "mrjones2014/codesettings.nvim",
+        opts = {
+            lua_ls_integration = function()
+                return (vim.uv.cwd() or ""):find("nvim") ~= nil
+            end
+        }
+    },
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
