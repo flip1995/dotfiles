@@ -28,6 +28,11 @@ tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
 tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 untug = ["bookmark", "move", "--from", "roots(@+:: & bookmarks())", "--to", "@", "--allow-backwards"]
 
+[revsets]
+# If someone branches off my stack, show their remote commits and keep showing my own commits,
+# instead of trimming them because they are immutable.
+log = "builtin_log() | (::mutable() ~ ::trunk()) | (untracked_remote_bookmarks() & descendants(::mutable() ~ ::trunk()))"
+
 [[--scope]]
 --when.repositories = ["~/recogni"]
 [--scope.user]
