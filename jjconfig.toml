@@ -24,6 +24,7 @@ auto-track = "none()"
 auto-track-created-bookmarks = "*"
 
 [aliases]
+plog = ["util", "exec", "--", "jj-log-pr"]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
 tug- = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 untug = ["bookmark", "move", "--from", "roots(@+:: & bookmarks())", "--to", "@", "--allow-backwards"]

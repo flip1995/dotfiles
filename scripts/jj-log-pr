@@ -1,0 +1,164 @@
+#!/usr/bin/env bash
+# ----------------------------------------------
+# NOTE: This is fully VIBE CODED. No guarantees!
+# ----------------------------------------------
+
+# `jj log` with each bookmark's GitHub PR appended to its log line: number, review state, and a
+# CI dot covering only the checks that branch protection requires for that PR.
+# Accepts the same arguments as `jj log` (avoid passing your own -T/--no-graph).
+set -uo pipefail
+
+cd "${JJ_WORKSPACE_ROOT:-.}" || exit 1
+
+if [[ -t 1 ]]; then color=always; else color=never; fi
+# OSC 8 hyperlinks on the PR number; set JJ_LOG_PR_LINKS=0/1 to force off/on when piping.
+if [[ -t 1 ]]; then links=1; else links=0; fi
+links=${JJ_LOG_PR_LINKS:-$links}
+log=$(jj log --color="$color" "$@") || exit $?
+
+emit() { if [[ -t 1 ]]; then less -FRX; else cat; fi; }
+
+# Bookmark names inside the same revset, stripped of `*` / `@remote` decorations.
+mapfile -t bookmarks < <(
+    jj log --no-graph --color=never -T 'bookmarks.map(|b| b.name()) ++ "\n"' "$@" 2>/dev/null |
+        tr -s ' ' '\n' | sed 's/[*@].*$//' | grep -v '^$' | sort -u
+)
+
+if ((${#bookmarks[@]} == 0)) || ! command -v gh >/dev/null; then
+    printf '%s\n' "$log" | emit
+    exit 0
+fi
+
+# One search request finds the open PRs of all bookmarks at once (`head:` qualifiers OR together),
+# then one request per PR, all in parallel, fetches its review state and checks. `isRequired` lets
+# GitHub decide which checks gate the PR's base branch, but needs the PR number, so it can't join
+# the search. Both it and `reviewDecision` are slow to resolve, and GitHub resolves the fields of one
+# request one after another, so spreading them over parallel requests beats batching them. The PR
+# numbers seen last time are cached per workspace, so their requests overlap the search instead of
+# waiting for it; the search still decides which PRs show up.
+tmp=$(mktemp -d)
+trap 'kill $(jobs -p) 2>/dev/null; rm -rf "$tmp"' EXIT
+cache=${XDG_CACHE_HOME:-$HOME/.cache}/jj-log-pr/$(pwd -P | tr / %)
+
+# The search string needs `owner/repo` spelled out, so resolve it locally like gh does: the
+# `gh repo set-default` choice, else the upstream, github or origin remote, else the first one.
+repo=$(gh repo set-default --view 2>/dev/null)
+[[ -n $repo ]] || repo=$(
+    jj git remote list 2>/dev/null | awk '
+        { url[$1] = $2; if (!first) first = $1 }
+        END { print "upstream" in url ? url["upstream"] : "github" in url ? url["github"] : "origin" in url ? url["origin"] : url[first] }
+    ' | sed -E 's#^.*github\.com[:/]##; s#/$##; s#\.git$##'
+)
+[[ $repo == */* ]] || { printf '%s\n' "$log" | emit; exit 0; }
+
+# Review state and CI of one PR. States bucket like `gh pr checks`, and a re-run check only counts
+# with its latest run.
+details() {
+    gh api graphql -f owner="${repo%%/*}" -f name="${repo#*/}" -F num="$1" -f query='
+        query($owner: String!, $name: String!, $num: Int!) { repository(owner: $owner, name: $name) {
+            pullRequest(number: $num) { reviewDecision commits(last: 1) { nodes { commit { statusCheckRollup {
+                contexts(first: 100) { nodes { __typename
+                    ... on CheckRun { name status conclusion startedAt isRequired(pullRequestNumber: $num)
+                        checkSuite { workflowRun { workflow { name } } } }
+                    ... on StatusContext { context state isRequired(pullRequestNumber: $num) } } } } } } } } } }' \
+        --jq '.data.repository.pullRequest | (.reviewDecision // "null") + "\t" + (
+            [.commits.nodes[0].commit.statusCheckRollup.contexts.nodes[]? | select(.isRequired) |
+            if .__typename == "CheckRun" then
+                {key: "run/\(.checkSuite.workflowRun.workflow.name // "")/\(.name)", at: (.startedAt // ""),
+                 state: (if .status == "COMPLETED" then .conclusion else .status end)}
+            else {key: "status/\(.context)", at: "", state: .state} end] |
+            group_by(.key) | map(max_by(.at).state) |
+            if length == 0 then "none"
+            elif any(IN("FAILURE", "ERROR", "TIMED_OUT", "ACTION_REQUIRED", "STARTUP_FAILURE", "CANCELLED")) then "fail"
+            elif all(IN("SUCCESS", "SKIPPED", "NEUTRAL")) then "pass"
+            else "run" end)' \
+        >"$tmp/pr-$1" 2>/dev/null
+}
+
+mkdir -p "${cache%/*}"
+[[ -e $cache ]] || : >"$cache"
+declare -A wanted=() pid=()
+for b in "${bookmarks[@]}"; do wanted[$b]=1; done
+while IFS=$'\t' read -r b num; do
+    [[ -n ${wanted[$b]:-} && -z ${pid[$num]:-} ]] || continue
+    details "$num" &
+    pid[$num]=$!
+done <"$cache"
+
+q="repo:$repo is:pr is:open"
+for b in "${bookmarks[@]}"; do q+=" head:$b"; done
+gh api graphql -f q="$q" -f query='query($q: String!) { search(query: $q, type: ISSUE, first: 100) {
+        nodes { ... on PullRequest { headRefName number isDraft url } } } }' \
+    --jq '.data.search.nodes[] | [.headRefName, (.number|tostring), (.isDraft|tostring), .url] | @tsv' \
+    >"$tmp/prs" 2>/dev/null
+# `head:` matches branch prefixes too, so keep only exact bookmark names (and one PR per bookmark).
+awk -F '\t' -v names="$(printf '%s\n' "${bookmarks[@]}")" '
+    BEGIN { n = split(names, name, "\n"); for (i = 1; i <= n; i++) want[name[i]] }
+    ($1 in want) && !seen[$1]++
+' "$tmp/prs" | sort >"$tmp/found"
+
+# Remember this revset's PRs, keeping the entries of bookmarks outside it for other revsets.
+awk -F '\t' -v OFS='\t' -v names="$(printf '%s\n' "${bookmarks[@]}")" '
+    BEGIN { n = split(names, name, "\n"); for (i = 1; i <= n; i++) cur[name[i]] }
+    FILENAME == ARGV[1] { print $1, $2; next }
+    !($1 in cur)
+' "$tmp/found" "$cache" >"$tmp/cache" && mv "$tmp/cache" "$cache"
+[[ -s "$tmp/found" ]] || { printf '%s\n' "$log" | emit; exit 0; }
+
+# Only wait for the PRs that are still open; a stale guess from the cache is killed on exit.
+needed=()
+while IFS=$'\t' read -r _ num _; do
+    if [[ -z ${pid[$num]:-} ]]; then
+        details "$num" &
+        pid[$num]=$!
+    fi
+    needed+=("${pid[$num]}")
+done <"$tmp/found"
+wait "${needed[@]}"
+
+while IFS=$'\t' read -r b num draft url; do
+    IFS=$'\t' read -r review ci <"$tmp/pr-$num"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$b" "$num" "$draft" "${review:-null}" "$url" "${ci:-none}"
+done <"$tmp/found" >"$tmp/map"
+
+printf '%s\n' "$log" | awk -v mapfile="$tmp/map" -v color="$color" -v links="$links" '
+function paint(s, c) { return color == "always" ? "\033[38;5;" c "m" s "\033[0m" : s }
+function link(s, u) { return links == 1 ? "\033]8;;" u "\033\\" s "\033]8;;\033\\" : s }
+BEGIN {
+    while ((getline line < mapfile) > 0) {
+        if (split(line, f, "\t") < 6) continue
+        num = "#" f[2]
+        ncol = "39"                                     # blue: open, review still pending
+        if (f[3] == "true") { num = num " draft"; ncol = "244" }
+        else if (f[4] == "APPROVED") { num = num " ✓"; ncol = "40" }
+        label = link(paint(num, ncol), f[5])
+        if (f[6] == "pass") label = label " " link(paint("●", "40"), f[5] "/checks")
+        else if (f[6] == "fail") label = label " " link(paint("●", "196"), f[5] "/checks")
+        else if (f[6] == "run") label = label " " link(paint("●", "214"), f[5] "/checks")
+        names[++count] = f[1]                           # fixed order, so labels never shuffle
+        pr[f[1]] = label
+    }
+}
+# A bookmark name may be a prefix of another (`foo` vs `foo-bar`), so a bare substring hit is not
+# enough: the occurrence has to be delimited the way jj renders a bookmark.
+function delim(c) { return c == "" || c == " " || c == "*" || c == "@" }
+function has(line, b,    pos, i, start, stop) {
+    pos = 0
+    while ((i = index(substr(line, pos + 1), b)) > 0) {
+        start = pos + i
+        stop = start + length(b) - 1
+        if (delim(start == 1 ? "" : substr(line, start - 1, 1)) && delim(substr(line, stop + 1, 1)))
+            return 1
+        pos = start
+    }
+    return 0
+}
+{
+    plain = $0
+    gsub(/\033\[[0-9;]*m/, "", plain)                   # drop SGR so the delimiters are real characters
+    extra = ""
+    for (i = 1; i <= count; i++)
+        if (has(plain, names[i])) extra = extra " " pr[names[i]]
+    print $0 extra
+}
+' | emit
